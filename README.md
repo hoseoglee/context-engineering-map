@@ -7,7 +7,7 @@ AI에 **회사 지식을 어떻게 넣어 주는가**(context injection / contex
 **https://hoseoglee.github.io/context-engineering-map/map/** — 스택 맵 · 2축 지도 · 히트맵 · 성숙도 · 관심도 추이 (조사일 2026-11-11)
 
 - **범위: 기업 규모 컨텍스트 플랫폼**(Gartner가 2026-08 "AI Context Platforms"로 처음 시장 개요를 낸 영역) — 회사 전체의 데이터·의미·지식·권한을 여러 AI와 사람에게 공급·통제하는 솔루션. 에이전트 하나 안의 SDK·대화 기억·창 압축은 제외, 기업용 AI 앱은 "소비 계층"으로 따로 표시. 판정: [`tools/scope.yaml`](tools/scope.yaml)
-- **관심도 추이**: Google Trends 2006~ 월별 (전 세계·한국). ⚠️ 2025-08~2026-09는 Google Trends 집계 이상 구간이라 해석에서 제외 — 근거: [`data/trends/README.md`](data/trends/README.md)
+- **관심도 추이**: Google Trends 2006~ 월별 (전 세계·한국). ⚠️ Google Trends 자체에 집계 이상 구간(전 세계 2025-06~2026-09, 한국 2025-11~2026-09)이 있어 영문 위키백과 조회수로 보정해 점선으로 표시 — 방법·근거: [`data/trends/README.md`](data/trends/README.md)
 - 정적 표 버전(회사 × 층 솔루션 이름): [`map/커버리지_히트맵.md`](map/커버리지_히트맵.md)
 
 ## 구성

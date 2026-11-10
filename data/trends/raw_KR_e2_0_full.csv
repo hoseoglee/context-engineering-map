@@ -169,7 +169,7 @@ date,knowledge graph,graph database,data lake,data catalog,data fabric,isPartial
 2019-12-01,2,0,5,2,0,False
 2020-01-01,3,0,4,2,0,False
 2020-02-01,2,0,5,2,0,False
-2020-03-01,3,2,3,0,0,False
+2020-03-01,4,2,3,0,0,False
 2020-04-01,3,0,3,2,0,False
 2020-05-01,2,2,2,1,0,False
 2020-06-01,2,0,4,0,0,False
@@ -243,7 +243,7 @@ date,knowledge graph,graph database,data lake,data catalog,data fabric,isPartial
 2026-02-01,38,6,100,66,39,False
 2026-03-01,78,15,49,30,35,False
 2026-04-01,86,16,50,33,35,False
-2026-05-01,98,18,58,31,31,False
+2026-05-01,98,18,59,31,31,False
 2026-06-01,80,15,49,31,27,False
 2026-07-01,63,10,41,25,15,False
 2026-08-01,15,2,61,51,5,False

@@ -223,7 +223,7 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2024-06-01,7,5,1,False
 2024-07-01,8,5,1,False
 2024-08-01,7,4,1,False
-2024-09-01,9,5,1,False
+2024-09-01,9,4,1,False
 2024-10-01,8,5,1,False
 2024-11-01,10,5,1,False
 2024-12-01,7,4,1,False
@@ -248,5 +248,5 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2026-07-01,75,29,12,False
 2026-08-01,36,18,8,False
 2026-09-01,41,28,7,False
-2026-10-01,13,8,4,False
-2026-11-01,9,6,3,True
+2026-10-01,12,8,3,False
+2026-11-01,10,6,3,True

@@ -49,7 +49,7 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2009-12-01,1,3,1,False
 2010-01-01,0,4,1,False
 2010-02-01,2,4,0,False
-2010-03-01,2,4,2,False
+2010-03-01,2,3,2,False
 2010-04-01,2,4,0,False
 2010-05-01,1,3,1,False
 2010-06-01,1,4,1,False
@@ -82,7 +82,7 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2012-09-01,11,4,1,False
 2012-10-01,11,4,1,False
 2012-11-01,8,4,1,False
-2012-12-01,47,3,1,False
+2012-12-01,46,3,1,False
 2013-01-01,13,4,1,False
 2013-02-01,8,4,2,False
 2013-03-01,9,5,1,False
@@ -146,7 +146,7 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2018-01-01,12,4,2,False
 2018-02-01,12,6,2,False
 2018-03-01,13,5,2,False
-2018-04-01,12,5,1,False
+2018-04-01,13,5,1,False
 2018-05-01,13,5,2,False
 2018-06-01,13,4,2,False
 2018-07-01,12,4,2,False
@@ -167,7 +167,7 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2019-10-01,21,6,2,False
 2019-11-01,19,6,2,False
 2019-12-01,16,6,2,False
-2020-01-01,15,6,2,False
+2020-01-01,16,6,2,False
 2020-02-01,19,6,2,False
 2020-03-01,17,6,2,False
 2020-04-01,17,7,1,False
@@ -178,7 +178,7 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2020-09-01,20,9,2,False
 2020-10-01,17,8,1,False
 2020-11-01,15,7,1,False
-2020-12-01,15,8,1,False
+2020-12-01,14,8,1,False
 2021-01-01,15,7,1,False
 2021-02-01,16,9,1,False
 2021-03-01,18,9,1,False
@@ -226,11 +226,9 @@ date,knowledge graph,data mesh,semantic layer,isPartial
 2024-09-01,43,22,5,False
 2024-10-01,39,25,5,False
 2024-11-01,47,23,6,False
-2024-12-01,35,20,4,False
+2024-12-01,36,20,4,False
 2025-01-01,38,21,5,False
 2025-02-01,46,26,6,False
 2025-03-01,44,25,6,False
 2025-04-01,42,25,6,False
 2025-05-01,44,26,7,False
-2025-06-01,51,35,9,False
-2025-07-01,60,35,10,False
