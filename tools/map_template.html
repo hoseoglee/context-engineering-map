@@ -6,16 +6,17 @@
 <title>Context Engineering Map</title>
 <style>
 :root{
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
   --bg:#f7f6f2;--panel:#ffffff;--ink:#1d1d1b;--muted:#6b6a64;--line:#e3e1d9;--accent:#2f5d8a;
   --c-data_platform:#2f6db5;--c-hyperscaler:#c2662d;--c-ai_lab:#7a4fb0;--c-agent_platform:#2f8a6b;
   --c-semantic_catalog:#b0892b;--c-knowledge_graph:#b0466a;--c-memory_retrieval:#4f8fa0;--c-enterprise_app:#6b7a2f;
   --c-ontology_platform:#8a3b2f;--c-other:#888;
   --h2:#2f5d8a;--h1:#a9c1da;--h0:transparent;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
   --bg:#141413;--panel:#1d1d1b;--ink:#ecebe6;--muted:#a3a29b;--line:#34332f;--accent:#8db4dc;--h2:#5b8fc4;--h1:#2e4a66;
 }}
-:root[data-theme="dark"]{--bg:#141413;--panel:#1d1d1b;--ink:#ecebe6;--muted:#a3a29b;--line:#34332f;--accent:#8db4dc;--h2:#5b8fc4;--h1:#2e4a66;}
+:root[data-theme="dark"]{--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;--bg:#141413;--panel:#1d1d1b;--ink:#ecebe6;--muted:#a3a29b;--line:#34332f;--accent:#8db4dc;--h2:#5b8fc4;--h1:#2e4a66;}
 *{box-sizing:border-box}
 a{color:var(--accent)}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif}
@@ -45,6 +46,29 @@ section[hidden]{display:none}
 .pillar .chips{flex-direction:column}
 .pillar .chip{white-space:normal;align-self:flex-start}
 #detail ul{padding-left:18px;margin:6px 0}#detail li{margin:3px 0}
+.vrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.vcard{border:1px solid var(--line);border-left:4px solid var(--vc);border-radius:6px;padding:3px 8px;font-size:12.5px;background:var(--bg);max-width:100%}
+.vcard b{margin-right:4px;cursor:pointer}
+.vcard .p{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.vcard .p:hover,.vcard .p:focus{color:var(--accent);outline:none}
+.vcard .sep{color:var(--muted);margin:0 3px}
+.vcard.partial{border-style:dashed;border-left-style:solid;opacity:.8}
+.pillars{display:grid;grid-template-columns:2fr 1fr;gap:8px}
+.appband{background:transparent;border:1px dashed var(--line)}
+.filters[hidden]{display:none}
+/* trends */
+.tctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;margin-bottom:10px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:var(--panel);color:var(--ink);padding:5px 12px;font:inherit;font-size:12.5px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;position:relative}
+.tcard h3{margin:0;font-size:14px}.tcard .sub{margin:2px 0 6px}
+.tleg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;margin:4px 0 2px}
+.tleg span{display:inline-flex;align-items:center;gap:5px;cursor:pointer}.tleg span[aria-pressed="false"]{opacity:.35}
+.tleg i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.ttip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:nowrap;z-index:2}
+.ttip b{display:block;margin-bottom:2px}.ttip i{width:9px;height:3px;display:inline-block;margin-right:5px;vertical-align:middle}
+.evt{font-size:10.5px}
 /* scatter */
 .scatterwrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px}
 svg text{fill:var(--ink)}
@@ -54,6 +78,10 @@ table{border-collapse:collapse;width:100%;font-size:12.5px}
 th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
 th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--panel)}
 td.h2{background:var(--h2);color:#fff}td.h1{background:var(--h1)}
+#heattable td{white-space:normal;min-width:110px;text-align:left;vertical-align:top;font-size:12px;line-height:1.35}
+#heattable td:first-child{min-width:130px;font-weight:600}
+#heattable td .p{display:block;cursor:pointer}#heattable td .p:hover{text-decoration:underline}
+#heattable td.h1{text-align:center;vertical-align:middle}
 /* ladder */
 .ladder{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;overflow-x:auto}
 .rung{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:140px}
@@ -65,43 +93,54 @@ td.h2{background:var(--h2);color:#fff}td.h1{background:var(--h1)}
 #detail .close{float:right;border:0;background:none;font-size:18px;cursor:pointer;color:var(--muted)}
 #detail a{color:var(--accent);word-break:break-all}
 .legend{font-size:12px;color:var(--muted);margin-top:8px}
-@media (max-width:760px){.stack{grid-template-columns:1fr}.ladder{grid-template-columns:1fr}.pillar .chips{flex-direction:row}}
+@media (max-width:760px){.pillars{grid-template-columns:1fr}.ladder{grid-template-columns:1fr}.pillar .chips{flex-direction:row}}
 </style>
 </head>
 <body>
 <header>
-  <h1>컨텍스트 엔지니어링 기술 맵 — 기업 솔루션 포지셔닝</h1>
-  <div class="sub">AI에 회사 지식을 넣어 주는 기술을 7개 층과 2개 기둥으로 나누고, 각 회사 제품을 배치했다. 칩을 누르면 근거가 나온다. · <a href="https://github.com/hoseoglee/context-engineering-map">GitHub</a></div>
+  <h1>기업 컨텍스트 플랫폼 맵 — 회사별 솔루션 포지셔닝</h1>
+  <div class="sub">회사 전체의 데이터·의미·지식·권한을 여러 AI와 사람에게 공급·통제하는 기업용 솔루션을 7개 층과 2개 기둥에 배치했다. 에이전트 하나 안의 도구(SDK·대화 기억·창 압축)는 제외. 솔루션 이름을 누르면 근거가 나온다. · <a href="https://github.com/hoseoglee/context-engineering-map">GitHub</a></div>
   <nav role="tablist">
     <button role="tab" data-tab="stack" aria-selected="true">스택 맵</button>
     <button role="tab" data-tab="scatter" aria-selected="false">2축 지도</button>
     <button role="tab" data-tab="heat" aria-selected="false">히트맵</button>
     <button role="tab" data-tab="ladder" aria-selected="false">성숙도</button>
+    <button role="tab" data-tab="trend" aria-selected="false">관심도 추이</button>
   </nav>
   <div class="filters" id="filters"><span>분류:</span></div>
 </header>
 <main>
   <section id="stack">
-    <p class="help">한 칩 = 그 층을 핵심 기능으로 가진 회사(×N = 해당 제품 수). 칩을 누르면 제품 목록과 근거가 나온다. 점선 칩 = 부분·프리뷰·파트너 의존.
-      <label><input type="checkbox" id="showPartial"> 부분 지원도 보기</label> · <label><input type="checkbox" id="byProduct"> 제품 단위로 펼치기</label></p>
-    <div class="stack">
-      <div class="pillar" id="p-GOV"></div>
-      <div class="layers" id="layers"></div>
-      <div class="pillar" id="p-OBS"></div>
-    </div>
+    <p class="help">각 층에 <b>회사 · 그 층을 맡는 솔루션</b>을 적었다. 회사 이름을 누르면 회사 전체, 솔루션 이름을 누르면 근거가 나온다. 점선 = 부분·프리뷰·파트너 의존.
+      <label><input type="checkbox" id="showPartial"> 부분 지원도 보기</label> · <label><input type="checkbox" id="showApps"> 맨 위에 소비 계층(기업용 AI 앱) 보기</label></p>
+    <div class="layer appband" id="apps" hidden></div>
+    <div class="layers" id="layers"></div>
+    <p class="help" style="margin-top:14px">↕ <b>기둥</b> — 아래 두 영역은 특정 층이 아니라 위 모든 층에 걸쳐 작동한다.</p>
+    <div class="pillars"><div class="pillar" id="p-GOV"></div><div class="pillar" id="p-OBS"></div></div>
   </section>
   <section id="scatter" hidden>
-    <p class="help">X축: 숫자·분석에 답하는가(왼쪽) ↔ 업무를 실행하는가(오른쪽). Y축: 사람이 미리 정리한 컨텍스트(아래) ↔ 에이전트가 스스로 찾고 쌓는 컨텍스트(위). 큰 점 = 회사 평균, 작은 점 = 제품.</p>
-    <label class="help"><input type="checkbox" id="showProducts"> 제품 점 보기</label>
+    <p class="help">X축: 숫자·분석에 답하는가(왼쪽) ↔ 업무를 실행하는가(오른쪽). Y축: 사람이 미리 정의한 컨텍스트(아래) ↔ AI가 사용 이력에서 자동으로 만들고 넓히는 컨텍스트(위). 큰 점 = 회사(솔루션 평균), 회사 이름 아래 = 대표 솔루션.</p>
+    <label class="help"><input type="checkbox" id="showProducts"> 솔루션별 점도 보기</label>
     <div class="scatterwrap"><svg id="svg" viewBox="0 0 900 640" width="100%" role="img" aria-label="2축 포지셔닝 지도"></svg></div>
   </section>
   <section id="heat" hidden>
-    <p class="help">●N = 그 층을 핵심 기능으로 가진 제품 수(많을수록 진함), ◐ = 부분·프리뷰·파트너 의존, 빈칸 = 근거 없음. 회사 이름을 누르면 제품 목록과 보정 내역이 나온다.</p>
+    <p class="help">칸 = 그 층을 핵심 기능으로 맡는 솔루션(여러 개일수록 진함). ◐ = 부분·프리뷰·파트너만, 빈칸 = 근거 없음. 솔루션을 누르면 근거, 회사를 누르면 보정 내역이 나온다.</p>
     <div class="tablewrap"><table id="heattable"></table></div>
   </section>
   <section id="ladder" hidden>
     <p class="help">FAOS 논문(arXiv 2604.00555)의 결합 성숙도. 누적 사다리라서, 윗단계는 아랫단계 조건을 갖춰야 한다(예: 거버넌스 핵심 기능이 없으면 L3 이상 불가). 조사값보다 낮춘 곳은 회사 이름을 누르면 이유가 나온다.</p>
     <div class="ladder" id="ladderbox"></div>
+  </section>
+  <section id="trend" hidden>
+    <p class="help">Google Trends 웹 검색 관심도(월별). 차트 안에서 최고값 = 100. 검색량이 수십 배 다른 용어는 섞으면 작은 쪽이 0으로 뭉개져서, 비슷한 규모끼리 차트를 나눴다. 마우스를 올리면 그 달의 값, 범례를 누르면 선 숨기기.</p>
+    <div class="tctl">
+      <span class="seg" role="group" aria-label="지역"><button data-geo="world" aria-pressed="true">전 세계</button><button data-geo="KR" aria-pressed="false">한국</button></span>
+      <span class="seg" role="group" aria-label="척도"><button data-sc="abs" aria-pressed="true">공통 척도</button><button data-sc="idx" aria-pressed="false">각 기술 최고점 = 100</button></span>
+      <label><input type="checkbox" id="smooth" checked> 3개월 이동평균</label>
+      <label><input type="checkbox" id="anom" checked> 집계 이상 구간(2025-08~2026-09) 값 제외</label>
+    </div>
+    <div id="tcharts"></div>
+    <p class="help" id="tnote"></p>
   </section>
   <p class="legend">데이터: <code>research/vendors/*.md</code> → <code>tools/build_map.py</code>. 근거가 없는 칸은 비워 두었다. 조사일 2026-11-11.</p>
 </main>
@@ -114,6 +153,18 @@ const active = new Set(cats);
 const col = c => `var(--c-${CN[c]?c:'other'})`;
 const esc = s => String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const vis = () => DATA.vendors.filter(v=>active.has(v.category));
+const core = v => v.products.filter(p=>p.scope==='core');
+const apps = v => v.products.filter(p=>p.scope==='app');
+const sh = p => p.short||p.name;
+const key = (fn) => e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn();}};
+// 회사 카드: 회사 이름 + 솔루션 이름들 (각각 클릭 가능)
+function vcard(v,prods,partial){
+  const c=document.createElement('span');c.className='vcard'+(partial?' partial':'');c.style.setProperty('--vc',col(v.category));
+  const b=document.createElement('b');b.textContent=v.name;b.tabIndex=0;b.setAttribute('role','button');b.onclick=()=>showDetail(v,null);b.onkeydown=key(()=>showDetail(v,null));c.appendChild(b);
+  prods.forEach((p,i)=>{if(i){const s=document.createElement('span');s.className='sep';s.textContent='·';c.appendChild(s);}
+    const a=document.createElement('span');a.className='p';a.textContent=sh(p);a.title=p.name;a.tabIndex=0;a.setAttribute('role','button');
+    a.onclick=()=>showDetail(v,p);a.onkeydown=key(()=>showDetail(v,p));c.appendChild(a);});
+  return c;}
 
 // filters
 const F = document.getElementById('filters');
@@ -125,6 +176,7 @@ cats.forEach(c=>{const b=document.createElement('button');b.className='chipf';b.
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));
   document.querySelectorAll('main section').forEach(s=>s.hidden=s.id!==b.dataset.tab);
+  document.getElementById('filters').hidden=b.dataset.tab==='trend';
   try{localStorage.setItem('cemap-tab',b.dataset.tab)}catch(e){}});
 try{const t=localStorage.getItem('cemap-tab');if(t)document.querySelector(`nav button[data-tab="${t}"]`)?.click()}catch(e){}
 
@@ -142,48 +194,36 @@ function showDetail(v,p){
   <div class="sub">${esc(CN[v.category]||v.category)}${p?` · ${esc(p.status||'')} ${esc(p.status_date||'')}`:''}</div>
   ${p?`<p><b>층</b>: ${esc(lay)||'—'}</p><p><b>위치</b>: x ${p.x??'—'}, y ${p.y??'—'} — ${esc(p.xy_reason)}</p><p><b>성숙도</b>: ${p.maturity??'—'}</p>
   <p><b>근거</b> (${esc(p.evidence_kind.join(', '))}):<br>${p.evidence.map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a>`).join('<br>')}</p>`
-  :`<p>제품 ${v.products.length}개 · 평균 위치 x ${v.x}, y ${v.y} · 성숙도 ${v.maturity??'—'}${v.maturity_claimed!==v.maturity?` (조사값 ${v.maturity_claimed}, 누적 기준 상한 적용)`:''}</p><p>${v.products.map(p=>esc(p.name)).join(', ')}</p>
+  :`<p>솔루션 ${core(v).length}개 · 평균 위치 x ${v.x}, y ${v.y} · 성숙도 ${v.maturity??'—'}${v.maturity_claimed!==v.maturity?` (조사값 ${v.maturity_claimed}, 누적 기준 상한 적용)`:''}</p><p><b>핵심 솔루션</b>: ${core(v).map(p=>esc(p.name)).join(', ')}</p>${apps(v).length?`<p><b>소비 계층(AI 앱)</b>: ${apps(v).map(p=>esc(p.name)).join(', ')}</p>`:''}
   ${v.adjustments.length?`<p><b>보정</b>:<br>${v.adjustments.map(esc).join('<br>')}</p>`:''}`}
   <p><a href="https://github.com/hoseoglee/context-engineering-map/blob/main/${esc(v.source_file)}" target="_blank" rel="noopener">조사 원문 보기 ↗</a></p>`;
   d.hidden=false;d.querySelector('.close').onclick=()=>d.hidden=true;d.querySelector('.close').focus();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('detail').hidden=true});
 
-function vchip(v,k,lvl,prods){
-  const c=document.createElement('span');c.className='chip'+(lvl===1?' partial':'');c.tabIndex=0;c.setAttribute('role','button');
-  c.style.background=col(v.category);c.style.borderColor=col(v.category);
-  c.innerHTML=`${esc(v.name)}${prods.length>1?` <b>×${prods.length}</b>`:''} ›`;c.title=prods.map(p=>p.name).join('\n');
-  const open=()=>showLayer(v,k,prods);c.onclick=open;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};return c;}
-function showLayer(v,k,prods){
-  const d=document.getElementById('detail');
-  d.innerHTML=`<button class="close" aria-label="닫기">×</button><h3>${esc(v.name)} — ${k} ${esc(LN[k])}</h3><div class="sub">${esc(CN[v.category]||v.category)} · 이 층에 해당하는 제품 ${prods.length}개</div>
-  <ul>${prods.map((p,i)=>`<li><a href="#" data-i="${i}">${esc(p.name)}</a> <span class="sub">${p.layers[k]===1?'(부분) ':''}${esc(p.status||'')} ${esc(p.status_date||'')}</span></li>`).join('')}</ul>
-  <p><a href="#" data-all>회사 전체 보기 ›</a></p>`;
-  d.hidden=false;d.querySelector('.close').onclick=()=>d.hidden=true;
-  d.querySelectorAll('a[data-i]').forEach(a=>a.onclick=e=>{e.preventDefault();showDetail(v,prods[+a.dataset.i]);});
-  d.querySelector('a[data-all]').onclick=e=>{e.preventDefault();showDetail(v,null);};d.querySelector('.close').focus();}
 function renderStack(){
-  const partial=document.getElementById('showPartial').checked, byProduct=document.getElementById('byProduct').checked;
+  const partial=document.getElementById('showPartial').checked, showApps=document.getElementById('showApps').checked;
   const box=document.getElementById('layers');box.innerHTML='';
-  const fill=(el,k)=>{const ch=document.createElement('div');ch.className='chips';
-    vis().forEach(v=>{
-      const core=v.products.filter(p=>p.layers[k]===2), part=v.products.filter(p=>p.layers[k]===1);
-      if(byProduct){core.forEach(p=>ch.appendChild(chip(v,p,2)));if(partial)part.forEach(p=>ch.appendChild(chip(v,p,1)));}
-      else if(core.length)ch.appendChild(vchip(v,k,2,[...core,...(partial?part:[])]));
-      else if(partial&&(part.length||v.coverage[k]===1))ch.appendChild(vchip(v,k,1,part));});
-    if(!ch.children.length){ch.innerHTML='<span class="sub">해당 없음</span>'};el.appendChild(ch);};
+  const fill=(el,k)=>{const row=document.createElement('div');row.className='vrow';
+    vis().forEach(v=>{const c=core(v).filter(p=>p.layers[k]===2), part=core(v).filter(p=>p.layers[k]===1);
+      if(c.length)row.appendChild(vcard(v,partial?[...c,...part]:c,false));
+      else if(partial&&part.length)row.appendChild(vcard(v,part,true));});
+    if(!row.children.length){row.innerHTML='<span class="sub">해당 없음</span>'};el.appendChild(row);};
   [...L].filter(k=>k.startsWith('L')).reverse().forEach(k=>{const d=document.createElement('div');d.className='layer';
-    const n=vis().filter(v=>v.coverage[k]===2).length;d.innerHTML=`<h3>${k} ${LN[k]} <small>· 핵심 보유 ${n}개사</small></h3>`;fill(d,k);box.appendChild(d);});
-  ['GOV','OBS'].forEach(k=>{const el=document.getElementById('p-'+k);el.innerHTML=`<h3>${LN[k]} <small>기둥</small></h3>`;fill(el,k);});}
+    const n=vis().filter(v=>v.coverage[k]===2).length;d.innerHTML=`<h3>${k} ${LN[k]} <small>· ${n}개사</small></h3>`;fill(d,k);box.appendChild(d);});
+  ['GOV','OBS'].forEach(k=>{const el=document.getElementById('p-'+k);el.innerHTML=`<h3>${LN[k]} <small>기둥</small></h3>`;fill(el,k);});
+  const ab=document.getElementById('apps');ab.hidden=!showApps;
+  if(showApps){ab.innerHTML='<h3>소비 계층 <small>· 위 컨텍스트를 받아 쓰는 기업용 AI 앱·에이전트 빌더 (맵 본체에는 포함하지 않음)</small></h3>';
+    const row=document.createElement('div');row.className='vrow';vis().forEach(v=>{if(apps(v).length)row.appendChild(vcard(v,apps(v),false));});ab.appendChild(row);}}
 
 function renderScatter(){
   const svg=document.getElementById('svg'),W=900,H=640,P=60;const sx=x=>P+(x+2)/4*(W-2*P),sy=y=>H-P-(y+2)/4*(H-2*P);
   let s=`<rect x="${P}" y="${P}" width="${W-2*P}" height="${H-2*P}" fill="none" stroke="var(--line)"/>
   <line x1="${sx(0)}" y1="${P}" x2="${sx(0)}" y2="${H-P}" stroke="var(--line)"/><line x1="${P}" y1="${sy(0)}" x2="${W-P}" y2="${sy(0)}" stroke="var(--line)"/>
   <text x="${P}" y="${H-P+24}" font-size="12">← 지표·분석 중심</text><text x="${W-P}" y="${H-P+24}" font-size="12" text-anchor="end">객체·행동 중심 →</text>
-  <text x="${P-8}" y="${P-10}" font-size="12">↑ 에이전트가 런타임에 찾고 쌓음</text><text x="${P-8}" y="${H-P+44}" font-size="12">↓ 사람이 미리 큐레이션</text>`;
+  <text x="${P-8}" y="${P-10}" font-size="12">↑ AI가 사용 이력에서 자동 구축·확장</text><text x="${P-8}" y="${H-P+44}" font-size="12">↓ 사람이 미리 정의</text>`;
   const showP=document.getElementById('showProducts').checked;const seen={};
   const jit=(k)=>{seen[k]=(seen[k]||0)+1;const n=seen[k]-1;return [Math.cos(n*2.4)*n*7,Math.sin(n*2.4)*n*7];};
-  if(showP)vis().forEach(v=>v.products.forEach((p,i)=>{if(p.x==null||p.y==null)return;const[jx,jy]=jit(p.x+','+p.y);
+  if(showP)vis().forEach(v=>v.products.forEach((p,i)=>{if(p.scope!=='core')return;if(p.x==null||p.y==null)return;const[jx,jy]=jit(p.x+','+p.y);
     s+=`<circle cx="${sx(p.x)+jx}" cy="${sy(p.y)+jy}" r="4" fill="${col(v.category)}" opacity=".45" data-v="${esc(v.vendor)}" data-p="${i}" style="cursor:pointer"><title>${esc(v.name)} · ${esc(p.name)}</title></circle>`;}));
   // 가까운 회사(30px 이내)는 하나의 묶음으로: 점은 작은 원으로 벌리고 이름은 한 줄로
   const pts=vis().filter(v=>v.x!=null).map(v=>({v,px:sx(v.x),py:sy(v.y)})),groups=[];
@@ -195,11 +235,14 @@ function renderScatter(){
   const NS='http://www.w3.org/2000/svg',placed=pts.map(p=>({x:p.cx-9,y:p.cy-9,width:18,height:18}));
   const hit=(b)=>placed.some(q=>b.x<q.x+q.width+4&&b.x+b.width+4>q.x&&b.y<q.y+q.height&&b.y+b.height>q.y);
   [...pts].sort((a,b)=>a.cy-b.cy||a.cx-b.cx).forEach(p=>{
-    const t=document.createElementNS(NS,'text');t.textContent=p.v.name;t.setAttribute('font-size','12');t.setAttribute('font-weight','600');
+    const t=document.createElementNS(NS,'text');t.setAttribute('font-size','12');
+    const top=core(p.v).slice().sort((a,b)=>Object.values(b.layers).reduce((x,y)=>x+y)-Object.values(a.layers).reduce((x,y)=>x+y)).slice(0,2).map(sh);
+    const t1=document.createElementNS(NS,'tspan');t1.textContent=p.v.name;t1.setAttribute('font-weight','700');t.appendChild(t1);
+    const t2=document.createElementNS(NS,'tspan');t2.textContent=top.join(' · ');t2.setAttribute('font-size','10.5');t2.setAttribute('fill','var(--muted)');t2.setAttribute('dy','13');t.appendChild(t2);
     t.dataset.v=p.v.vendor;t.style.cursor='pointer';svg.appendChild(t);
-    const cand=[[13,4],[-13,4,'end'],[0,-13,'middle'],[0,20,'middle']];let ok=false,dy=0;
-    for(let k=0;k<40&&!ok;k++){for(const [ox,oy,anc] of cand){t.setAttribute('x',p.cx+ox);t.setAttribute('y',p.cy+oy+dy);t.setAttribute('text-anchor',anc||'start');
-      const bb=t.getBBox();if(!hit(bb)){ok=true;placed.push(bb);break;}} if(!ok)dy+=14;}
+    const cand=[[13,0],[-13,0,'end'],[0,-26,'middle'],[0,22,'middle']];let ok=false,dy=0;
+    for(let k=0;k<40&&!ok;k++){for(const [ox,oy,anc] of cand){t.setAttribute('x',p.cx+ox);t.setAttribute('y',p.cy+oy+dy);t.setAttribute('text-anchor',anc||'start');t2.setAttribute('x',p.cx+ox);
+      const bb=t.getBBox();if(!hit(bb)){ok=true;placed.push(bb);break;}} if(!ok)dy+=16;}
     if(dy>0){const l=document.createElementNS(NS,'line');const bb=t.getBBox();l.setAttribute('x1',p.cx);l.setAttribute('y1',p.cy);
       l.setAttribute('x2',bb.x);l.setAttribute('y2',bb.y+bb.height/2);l.setAttribute('stroke','var(--muted)');l.setAttribute('stroke-width','.7');svg.insertBefore(l,svg.firstChild.nextSibling);}
   });
@@ -210,19 +253,85 @@ function renderHeat(){
   const t=document.getElementById('heattable');
   let h=`<tr><th>회사</th>${L.map(k=>`<th title="${esc(LN[k])}">${k}<br><span class="sub">${esc(LN[k])}</span></th>`).join('')}<th>성숙도</th></tr>`;
   vis().sort((a,b)=>a.category.localeCompare(b.category)||Object.values(b.coverage).reduce((x,y)=>x+y)-Object.values(a.coverage).reduce((x,y)=>x+y))
-   .forEach(v=>{h+=`<tr><td><span class="dot" style="background:${col(v.category)}"></span> <a href="#" data-v="${esc(v.vendor)}">${esc(v.name)}</a></td>${L.map(k=>{const c=v.coverage[k],n=v.depth[k];
-      const st=c===2?`style="opacity:${Math.min(1,.55+.15*n)}"`:'';return `<td class="h${c}" ${st} title="${esc(LN[k])}: ${c===2?n+'개 제품이 핵심':c===1?'부분 지원':'근거 없음'}">${c===2?'●'+n:c===1?'◐':''}</td>`}).join('')}<td>${v.maturity??''}</td></tr>`;});
-  t.innerHTML=h;t.querySelectorAll('a[data-v]').forEach(a=>a.onclick=e=>{e.preventDefault();showDetail(DATA.vendors.find(x=>x.vendor===a.dataset.v),null);});}
+   .forEach(v=>{h+=`<tr><td><span class="dot" style="background:${col(v.category)}"></span> <a href="#" data-v="${esc(v.vendor)}">${esc(v.name)}</a></td>${L.map(k=>{const c=v.coverage[k],ps=core(v).map((p,i)=>[p,v.products.indexOf(p)]).filter(([p])=>p.layers[k]===2);
+      const st=c===2?`style="background:color-mix(in srgb,var(--h2) ${Math.min(100,45+18*ps.length)}%,var(--panel))"`:'';
+      return `<td class="h${c===2?2:c}" ${st}>${c===2?ps.map(([p,i])=>`<span class="p" data-v="${esc(v.vendor)}" data-p="${i}" title="${esc(p.name)}" tabindex="0" role="button">${esc(sh(p))}</span>`).join(''):c===1?'◐':''}</td>`}).join('')}<td>${v.maturity??''}</td></tr>`;});
+  t.innerHTML=h;t.querySelectorAll('.p[data-v]').forEach(el=>{const v=DATA.vendors.find(x=>x.vendor===el.dataset.v),p=v.products[+el.dataset.p];el.onclick=()=>showDetail(v,p);el.onkeydown=key(()=>showDetail(v,p));});t.querySelectorAll('a[data-v]').forEach(a=>a.onclick=e=>{e.preventDefault();showDetail(DATA.vendors.find(x=>x.vendor===a.dataset.v),null);});}
 
 function renderLadder(){
   const R=[[1,'L1 컨텍스트 주입','온톨로지·지식을 프롬프트에 넣음'],[2,'L2 도구 발견 제약','보여 줄 도구·스킬을 지식으로 거름'],[3,'L3 실행 게이트','실행 중 승인·에스컬레이션 강제'],[4,'L4 출력 검증','생성 결과를 규칙·근거로 검사'],[5,'L5 폐루프','경험으로 컨텍스트가 스스로 진화']];
   const box=document.getElementById('ladderbox');box.innerHTML='';
   R.forEach(([n,t,d])=>{const r=document.createElement('div');r.className='rung';r.innerHTML=`<h3>${t}</h3><p>${d}</p>`;const ch=document.createElement('div');ch.className='chips';
-    vis().filter(v=>v.maturity===n).forEach(v=>{const c=document.createElement('span');c.className='chip';c.style.background=col(v.category);c.textContent=v.name;c.tabIndex=0;c.setAttribute('role','button');c.onclick=()=>showDetail(v,null);ch.appendChild(c);});
+    ch.className='vrow';ch.style.flexDirection='column';
+    vis().filter(v=>v.maturity===n).forEach(v=>{const best=core(v).filter(p=>(p.maturity??0)>=n);ch.appendChild(vcard(v,best.length?best:core(v).filter(p=>p.maturity===Math.max(...core(v).map(q=>q.maturity??0))),false));});
     r.appendChild(ch);box.appendChild(r);});}
 
-function render(){renderStack();renderScatter();renderHeat();renderLadder();}
-document.getElementById('showPartial').onchange=renderStack;document.getElementById('byProduct').onchange=renderStack;document.getElementById('showProducts').onchange=renderScatter;
+
+// ---------- 관심도 추이 (Google Trends) ----------
+const TR=DATA.trends, EV=DATA.events||[];
+const tstate={geo:'world',sc:'abs',hidden:new Set()};
+const ANOM=['2025-08','2026-09'];const inAnom=d=>d>=ANOM[0]&&d<=ANOM[1];
+const PANELS=[
+  {id:'story',title:'핵심 서사 — RAG에서 GraphRAG·MCP·컨텍스트 엔지니어링으로',sub:'2019년~. 다섯 용어를 한 요청으로 받아 서로 직접 비교된다. 세로 점선 = 출처가 확인된 사건(누르면 원문).'},
+  {id:'e1',title:'1 시맨틱 웹·전사 데이터 시대',sub:'2006년~ 전체 기간'},
+  {id:'e2',title:'2 빅데이터·지식그래프 시대',sub:'2006년~ 전체 기간 (두 요청을 지식그래프 기준으로 이음)'},
+  {id:'e3',title:'3 LLM·에이전트 시대 — 큰 흐름',sub:'2006년~ 전체 기간. AI 에이전트 검색량이 압도적이라 "각 기술 최고점 = 100" 으로 보면 모양 비교가 쉽다.'},
+];
+function tseries(clean,raw,dates){const ex=document.getElementById('anom').checked;
+  const r=ex?clean.slice():raw.slice();
+  if(!document.getElementById('smooth').checked)return r;
+  return r.map((x,i)=>{if(x==null)return null;const w=r.slice(Math.max(0,i-2),i+1).filter(y=>y!=null);return w.reduce((a,b)=>a+b,0)/w.length;});}
+function renderTrend(){
+  const box=document.getElementById('tcharts');if(!TR){box.innerHTML='<p class="sub">관심도 데이터 없음 (tools/fetch_trends.py 실행 필요)</p>';return;}
+  const G=TR.geos[tstate.geo];box.innerHTML='';
+  PANELS.forEach(P=>{const pd=G.panels[P.id];if(!pd)return;const dates=pd.dates;
+    const terms=Object.keys(pd.series);
+    let ser=terms.map((term,k)=>({term,ko:TR.ko[term]||term,v:tseries(pd.series[term],(pd.raw||pd.series)[term],dates),color:`var(--s${k+1})`}));
+    const pmax=Math.max(...ser.flatMap(s=>s.v).filter(x=>x!=null))||1;
+    ser.forEach(s=>{const m=tstate.sc==='idx'?(Math.max(...s.v.filter(x=>x!=null))||1):pmax;s.v=s.v.map(x=>x==null?null:x/m*100);});
+    const card=document.createElement('div');card.className='tcard';
+    card.innerHTML=`<h3>${esc(P.title)}</h3><div class="sub">${esc(P.sub)}</div><div class="tleg"></div>`;
+    const leg=card.querySelector('.tleg');
+    ser.forEach(s=>{const sp=document.createElement('span');sp.setAttribute('role','button');sp.tabIndex=0;sp.setAttribute('aria-pressed',!tstate.hidden.has(s.term));
+      sp.innerHTML=`<i style="background:${s.color}"></i>${esc(s.ko)} <span class="sub">${esc(s.term)}</span>`;
+      const tg=()=>{tstate.hidden.has(s.term)?tstate.hidden.delete(s.term):tstate.hidden.add(s.term);renderTrend();};sp.onclick=tg;sp.onkeydown=key(tg);leg.appendChild(sp);});
+    const vis=ser.filter(s=>!tstate.hidden.has(s.term));
+    const evs=EV.filter(e=>(e.panels||[]).includes(P.id)&&dates.includes(e.date));
+    const lanes=evs.length?3:0,W=1000,mt=14+lanes*13,H=(P.id==='story'?320:240)+lanes*13,ml=36,mr=14,mb=26;
+    const ymax=Math.max(1,...vis.flatMap(s=>s.v).filter(x=>x!=null));const yt=niceMax(ymax);
+    const X=i=>ml+i/(dates.length-1)*(W-ml-mr),Y=v=>H-mb-v/yt*(H-mt-mb);
+    let svg=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(P.title)} 관심도 추이">`;
+    for(let k=0;k<=4;k++){const v=yt*k/4;svg+=`<line x1="${ml}" x2="${W-mr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="${k?0.6:1}"/><text x="${ml-6}" y="${Y(v)+4}" font-size="10" text-anchor="end" fill="var(--muted)">${Number.isInteger(v)?v:v.toFixed(1)}</text>`;}
+    const step=dates.length>120?2:1;dates.forEach((d,i)=>{if(d.endsWith('-01')&&(+d.slice(0,4))%step===0)svg+=`<text x="${X(i)}" y="${H-8}" font-size="10" text-anchor="middle" fill="var(--muted)">${d.slice(0,4)}</text>`;});
+    {const a0=dates.findIndex(inAnom);if(a0>=0){const a1=dates.length-1-[...dates].reverse().findIndex(inAnom);
+     svg+=`<rect x="${X(a0)}" y="${mt}" width="${Math.max(2,X(a1)-X(a0))}" height="${H-mt-mb}" fill="var(--muted)" opacity=".13"><title>Google Trends 집계 이상 구간 ${ANOM[0]}~${ANOM[1]}: 주제와 무관한 기술 검색어까지 함께 급등했다가 2026-10 원복 → 해석 제외</title></rect><text x="${(X(a0)+X(a1))/2}" y="${H-mb-6}" font-size="10" text-anchor="middle" fill="var(--muted)">집계 이상</text>`;}}
+    // 사건: 세로 점선 + 라벨(줄마다 오른쪽 끝을 기억해 겹치지 않게, 오른쪽 끝에 닿으면 왼쪽으로)
+    const laneEnd=Array(lanes).fill(-1e9);
+    evs.forEach(e=>{const x=X(dates.indexOf(e.date)),w=e.label.length*6.4+6;const right=x+3+w>W-mr;
+      const l0=right?x-3-w:x+3;let ln=laneEnd.findIndex(r=>l0>r+6);if(ln<0)ln=laneEnd.indexOf(Math.min(...laneEnd));laneEnd[ln]=l0+w;
+      const ly=14+ln*13+9;
+      svg+=`<a href="${esc(e.url)}" target="_blank" rel="noopener"><line x1="${x}" x2="${x}" y1="${ly+3}" y2="${H-mb}" stroke="var(--muted)" stroke-dasharray="3 3" stroke-width=".8"/><text class="evt" x="${right?x-3:x+3}" y="${ly}" text-anchor="${right?'end':'start'}" fill="var(--muted)">${esc(e.label)}</text><title>${esc(e.date)} ${esc(e.label)} (원문 열기)</title></a>`;});
+    vis.forEach(s=>{let pen=false;const d=s.v.map((v,i)=>{if(v==null){pen=false;return '';}const c=`${pen?'L':'M'}${X(i).toFixed(1)},${Y(v).toFixed(1)}`;pen=true;return c;}).join('');
+      svg+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round"/>`;});
+    svg+=`<line class="xh" y1="${mt}" y2="${H-mb}" stroke="var(--ink)" stroke-width=".8" visibility="hidden"/><rect x="${ml}" y="${mt}" width="${W-ml-mr}" height="${H-mt-mb}" fill="transparent" class="hit"/></svg>`;
+    card.insertAdjacentHTML('beforeend',svg+'<div class="ttip" hidden></div>');box.appendChild(card);
+    const sv=card.querySelector('svg'),hit=sv.querySelector('.hit'),xh=sv.querySelector('.xh'),tip=card.querySelector('.ttip');
+    hit.addEventListener('mousemove',ev=>{const r=sv.getBoundingClientRect(),px=(ev.clientX-r.left)/r.width*W;
+      const i=Math.max(0,Math.min(dates.length-1,Math.round((px-ml)/(W-ml-mr)*(dates.length-1))));xh.setAttribute('x1',X(i));xh.setAttribute('x2',X(i));xh.setAttribute('visibility','visible');
+      const rows=vis.map(s=>[s,s.v[i]]).filter(r=>r[1]!=null).sort((a,b)=>b[1]-a[1]);
+      tip.innerHTML=`<b>${dates[i]}</b>`+(inAnom(dates[i])?'<div class="sub">집계 이상 구간</div>':'')+rows.map(([s,v])=>`<div><i style="background:${s.color}"></i>${esc(s.ko)} ${v.toFixed(1)}</div>`).join('');
+      tip.hidden=false;const cr=card.getBoundingClientRect();let left=ev.clientX-cr.left+14;if(left>cr.width-190)left=ev.clientX-cr.left-200;tip.style.left=left+'px';tip.style.top=(ev.clientY-cr.top+10)+'px';});
+    hit.addEventListener('mouseleave',()=>{tip.hidden=true;xh.setAttribute('visibility','hidden');});
+  });
+  document.getElementById('tnote').innerHTML=`출처: Google Trends(pytrends, 수집 ${esc(TR.fetched)}, 지역: ${esc(G.name)}). 차트마다 그 차트 안 최고값 = 100(차트끼리 세로축 비교 불가). 검색어(용어) 기준이라 동음이의어·표기 차이의 영향을 받는다. 원본·이상 구간 검증: <a href="https://github.com/hoseoglee/context-engineering-map/tree/main/data/trends">data/trends</a>. 마지막 달은 집계 중일 수 있다.`;
+}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v)));const m=v/p;return (m<=1?1:m<=2?2:m<=2.5?2.5:m<=5?5:10)*p;}
+document.querySelectorAll('[data-geo]').forEach(b=>b.onclick=()=>{tstate.geo=b.dataset.geo;document.querySelectorAll('[data-geo]').forEach(x=>x.setAttribute('aria-pressed',x===b));renderTrend();});
+document.querySelectorAll('[data-sc]').forEach(b=>b.onclick=()=>{tstate.sc=b.dataset.sc;document.querySelectorAll('[data-sc]').forEach(x=>x.setAttribute('aria-pressed',x===b));renderTrend();});
+document.getElementById('smooth').onchange=renderTrend;document.getElementById('anom').onchange=renderTrend;
+
+function render(){renderStack();renderScatter();renderHeat();renderLadder();renderTrend();}
+document.getElementById('showPartial').onchange=renderStack;document.getElementById('showApps').onchange=renderStack;document.getElementById('showProducts').onchange=renderScatter;
 render();
 </script>
 </body>

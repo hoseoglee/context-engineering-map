@@ -1,0 +1,99 @@
+# 맵 범위 판정 (2026-11-11 사용자 교정 반영)
+# "기업 규모에서 쓸 솔루션 — AI agent 내부에서 context 관리하는 것 말고"
+#
+#   E  enterprise_context   : 회사 전체 데이터·의미·지식·권한을 만들고/저장하고/공급하고/통제 → 맵 본체
+#   A  enterprise_agent_app : 그 컨텍스트를 소비하는 기업용 AI 앱·에이전트 빌더 → "소비 계층"(토글)
+#   X  agent_internal       : 에이전트 하나 안의 SDK·런타임·대화 기억·창 압축·트레이싱 → 맵에서 제외
+#
+# 여기 없는 제품은 조사 파일의 `scope:` 필드를 따르고, 그것도 없으면 E 로 본다.
+X:
+  # 에이전트 런타임·SDK·프레임워크
+  - aws-agentcore-runtime
+  - aws-mcp-server            # AWS 서비스 조작용 개발자 MCP
+  - databricks-genie-code     # 코딩 에이전트
+  - databricks-agent-bricks   # 에이전트 빌더·샌드박스
+  - google-agent-platform
+  - google-a2a                # 에이전트 간 통신 규격
+  - microsoft-foundry-agent-service
+  - microsoft-agent-framework
+  - microsoft-graphrag        # 오픈소스 라이브러리
+  - openai-agents-sdk
+  - anthropic-agent-skills
+  - glean-headless-agent-building
+  - palantir-procode-agents
+  - palantir-mcp              # Foundry 개발용 MCP
+  - snowflake-cortex-agents
+  - snowflake-coco
+  - alation-agent-studio
+  - elastic-agent-builder
+  - elastic-workflows
+  - contextual-agent-composer
+  - langchain-langchain-middleware
+  - langchain-langgraph
+  - langchain-deep-agents
+  - llamaindex-llamaagents-workflows
+  - letta-code
+  - letta-api
+  # 에이전트 단위 기억·대화 창 관리
+  - aws-agentcore-memory
+  - databricks-agent-memory-lakebase
+  - google-memory-bank
+  - anthropic-context-editing-memory-tool
+  - anthropic-compaction
+  - anthropic-managed-agents-memory
+  - writer-agent-memory
+  - zep-agent-memory
+  - zep-agent-skills
+  - zep-graphiti
+  - mem0-platform
+  - mem0-memory-decay
+  - mem0-oss-openmemory
+  - mem0-integrations
+  - letta-context-repositories
+  - letta-reflection-subagents
+  - palantir-aip-evolve
+  # 에이전트 트레이싱·평가
+  - aws-agentcore-obs-evals
+  - databricks-mlflow3-genai
+  - langchain-langsmith
+  - snowflake-ai-observability
+  - elastic-trace-feedback
+  # 개발자용 검색·파싱 부품 (전사 플랫폼이 아니라 RAG 파이프라인 부품)
+  - cohere-rerank
+  - contextual-grounded-generation
+  - contextual-reranker-parser
+  - llamaindex-llamaparse
+  - llamaindex-extract
+  - llamaindex-index
+  - llamaindex-mcp
+  - pinecone-assistant
+  - pinecone-mcp-server
+  - pinecone-fulltext-search
+  - pinecone-rbac
+  - neo4j-graphrag-a2a
+  - contextual-datastores     # 개발자용 RAG 저장소 부품
+A:
+  - aws-quick
+  - databricks-genie-agents
+  - databricks-genie-one
+  - google-conversational-analytics
+  - google-gemini-enterprise
+  - microsoft-fabric-data-agent
+  - microsoft-copilot-studio
+  - openai-company-knowledge
+  - glean-agents
+  - cohere-north
+  - writer-ai-hq
+  - sap-joule-studio
+  - sap-joule-work
+  - servicenow-autonomous-data-analytics
+  - oracle-select-ai-agent
+  - oracle-fusion-ai-agent-studio
+  - ibm-watsonx-orchestrate
+  - cube-analytics-chat
+  - neo4j-aura-agent
+  - palantir-aip-logic
+  - palantir-chatbot-studio
+  - palantir-aip-analyst
+  - snowflake-cortex-analyst
+  - snowflake-cowork

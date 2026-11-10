@@ -1,0 +1,11 @@
+# 관심도 차트에 표시하는 사건. 출처가 확인된 것만 넣는다(추정치·벤더 홍보 수치 금지).
+# panels: 표시할 차트 (story=핵심 서사, e1~e3=시대별)
+- {date: 2010-10, panels: [e2], label: "'데이터 레이크' 용어 등장", url: "https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/"}
+- {date: 2012-05, panels: [e2], label: "Google Knowledge Graph 공개", url: "https://blog.google/products/search/introducing-knowledge-graph-things-not/"}
+- {date: 2019-05, panels: [e2], label: "Data Mesh 제안", url: "https://martinfowler.com/articles/data-monolith-to-mesh.html"}
+- {date: 2020-05, panels: [story, e3], label: "RAG 논문", url: "https://arxiv.org/abs/2005.11401"}
+- {date: 2022-11, panels: [story, e3, e2], label: "ChatGPT 공개", url: "https://openai.com/index/chatgpt/"}
+- {date: 2024-04, panels: [story], label: "MS GraphRAG 논문", url: "https://arxiv.org/abs/2404.16130"}
+- {date: 2024-11, panels: [story, e3], label: "MCP 발표", url: "https://www.anthropic.com/news/model-context-protocol"}
+- {date: 2025-01, panels: [story], label: "GraphRAG 서베이: 일반 RAG 한계 지적", url: "https://arxiv.org/abs/2501.13958"}
+- {date: 2025-06, panels: [story], label: "'컨텍스트 엔지니어링' 확산", url: "https://simonwillison.net/2025/Jun/27/context-engineering/"}

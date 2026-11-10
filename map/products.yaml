@@ -6,6 +6,8 @@
   products:
   - id: aws-context
     name: AWS Context
+    short: AWS Context
+    scope: core
     status: announced
     status_date: 2026-06
     layers:
@@ -30,6 +32,8 @@
     - secondary
   - id: aws-glue-sagemaker-catalog
     name: Glue Data Catalog 비즈니스 컨텍스트 + SageMaker Catalog
+    short: Glue Data Catalog 비즈니스 컨텍스트 + SageMaker Catalog
+    scope: core
     status: preview
     status_date: 2026-06
     layers:
@@ -55,6 +59,8 @@
     - official
   - id: aws-s3-vectors-annotations
     name: S3 Vectors + S3 Annotations
+    short: S3 Vectors + S3 Annotations
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -78,6 +84,8 @@
     - official
   - id: aws-bedrock-knowledge-bases
     name: Amazon Bedrock Knowledge Bases (Managed KB, GraphRAG, 구조화 데이터)
+    short: Bedrock Knowledge Bases
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -102,6 +110,8 @@
     - official
   - id: aws-neptune
     name: Amazon Neptune / Neptune Analytics
+    short: Neptune / Neptune Analytics
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -123,54 +133,10 @@
     - https://aws.amazon.com/about-aws/whats-new/2026/01/amazon-neptune-analytics-generally-available-additional-regions/
     evidence_kind:
     - official
-  - id: aws-agentcore-runtime
-    name: AgentCore Runtime + Harness
-    status: GA
-    status_date: 2026-06
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 1
-    x: 2
-    y: 1
-    xy_reason: 도구 실행·장기 실행 에이전트 인프라. 런타임에 에이전트가 스스로 도구를 고름
-    maturity: 3
-    evidence:
-    - https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/release-notes.html
-    evidence_kind:
-    - official
-  - id: aws-agentcore-memory
-    name: AgentCore Memory
-    status: GA
-    status_date: 2025-10
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 대화·이벤트에서 기억을 자동 추출, episodic 전략은 여러 에피소드에서 교훈을 생성
-    maturity: 5
-    evidence:
-    - https://aws.amazon.com/about-aws/whats-new/2026/09/agentcore-memory-direct-ingest
-    - https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-bedrock-agentcore-policy-evaluations-preview
-    - https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/release-notes.html
-    evidence_kind:
-    - official
   - id: aws-agentcore-gateway-identity-registry
     name: AgentCore Gateway + Identity + AWS Agent Registry
+    short: AgentCore Gateway + Identity + AWS Agent Registry
+    scope: core
     status: GA
     status_date: 2026-08
     layers:
@@ -193,6 +159,8 @@
     - official
   - id: aws-policy-guardrails
     name: AgentCore Policy (Cedar) + Bedrock Guardrails + Automated Reasoning checks
+    short: AgentCore Policy + Bedrock Guardrails + Automated Reasoning checks
+    scope: core
     status: GA
     status_date: 2026-03
     layers:
@@ -215,31 +183,10 @@
     - https://aws.amazon.com/about-aws/whats-new/2025/08/automated-reasoning-checks-amazon-bedrock-guardrails
     evidence_kind:
     - official
-  - id: aws-agentcore-obs-evals
-    name: AgentCore Observability + Evaluations (Recommendations, A/B)
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 2
-    x: 1
-    y: 0
-    xy_reason: 에이전트 행동 품질 측정. 평가 기준은 사람, 실패 분석·추천은 자동
-    maturity: 4
-    evidence:
-    - https://aws.amazon.com/about-aws/whats-new/2026/03/agentcore-evaluations-generally-available
-    - https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/release-notes.html
-    evidence_kind:
-    - official
   - id: aws-quick
     name: Amazon Quick (구 Quick Suite / Q Business 후속)
+    short: Amazon Quick
+    scope: app
     status: GA
     status_date: 2025-10
     layers:
@@ -263,54 +210,32 @@
     - https://aws.amazon.com/about-aws/whats-new/2026/06/aws-service-availability/
     evidence_kind:
     - official
-  - id: aws-mcp-server
-    name: AWS MCP Server + Agent Toolkit for AWS
-    status: GA
-    status_date: 2026-05
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 0
-      L6: 0
-      L7: 2
-      GOV: 2
-      OBS: 1
-    x: 2
-    y: -1
-    xy_reason: AWS 자원을 직접 조작(쓰기)하는 도구. 스킬은 AWS가 사전 큐레이션
-    maturity: 2
-    evidence:
-    - https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available
-    - https://aws.amazon.com/about-aws/whats-new/2026/05/agent-toolkit
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 2
     L3: 2
-    L4: 2
-    L5: 2
+    L4: 1
+    L5: 1
     L6: 2
     L7: 2
     GOV: 2
-    OBS: 2
+    OBS: 0
   depth:
-    L1: 5
+    L1: 3
     L2: 1
-    L3: 3
-    L4: 1
-    L5: 2
-    L6: 2
-    L7: 3
-    GOV: 5
-    OBS: 1
-  x: 0.42
-  y: -0.33
-  maturity: 5
+    L3: 2
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 1
+    GOV: 4
+    OBS: 0
+  x: -0.29
+  y: -1.0
+  maturity: 4
   maturity_claimed: 5
-  adjustments: []
+  adjustments:
+  - '성숙도 5→4: L5 폐루프는 기억·이력과 관측·평가가 모두 있어야 함'
 - vendor: databricks
   name: Databricks
   full_name: Databricks
@@ -319,6 +244,8 @@
   products:
   - id: databricks-metric-views
     name: Unity Catalog Business Semantics (Metric Views)
+    short: Unity Catalog Business Semantics
+    scope: core
     status: GA
     status_date: 2026-04
     layers:
@@ -342,6 +269,8 @@
     - official
   - id: databricks-genie-ontology
     name: Genie Ontology
+    short: Genie Ontology
+    scope: core
     status: preview
     status_date: 2026-06
     layers:
@@ -367,6 +296,8 @@
     - secondary
   - id: databricks-genie-agents
     name: Genie Agents (formerly Genie Spaces)
+    short: Genie Agents
+    scope: app
     status: GA
     status_date: 2026-07
     layers:
@@ -389,6 +320,8 @@
     - official
   - id: databricks-genie-one
     name: Genie One
+    short: Genie One
+    scope: app
     status: GA
     status_date: 2026-06
     layers:
@@ -410,77 +343,10 @@
     - https://docs.databricks.com/aws/generative-ai/mcp/managed-mcp
     evidence_kind:
     - official
-  - id: databricks-genie-code
-    name: Genie Code (+ ZeroOps)
-    status: GA
-    status_date: 2026-06
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 1
-    x: 1
-    y: 1
-    xy_reason: 파이프라인·ML 작업을 직접 구현·실행하는 자율 에이전트
-    maturity: 2
-    evidence:
-    - https://www.databricks.com/company/newsroom/press-releases/databricks-launches-genie-one-all-new-agentic-coworker-every-team
-    evidence_kind:
-    - official
-  - id: databricks-agent-bricks
-    name: Agent Bricks (Knowledge Assistant, Supervisor Agent, Sandbox)
-    status: GA
-    status_date: 2026-02
-    layers:
-      L1: 1
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 1
-      OBS: 0
-    x: 1
-    y: 0
-    xy_reason: 범용 에이전트 개발·실행 플랫폼, 도구·하위 에이전트는 개발자가 구성하고 런타임에 라우팅
-    maturity: 3
-    evidence:
-    - https://www.databricks.com/blog/agent-bricks-dais-2026
-    - https://www.databricks.com/blog/agent-bricks-supervisor-agent-now-ga-orchestrate-enterprise-agents
-    - https://learn.microsoft.com/en-us/azure/databricks/release-notes/product/2026/march
-    evidence_kind:
-    - official
-  - id: databricks-agent-memory-lakebase
-    name: Agent Memory Service (Lakebase)
-    status: GA
-    status_date: 2026-06
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 에이전트가 실행 중 상태·기억을 스스로 쓰고 다시 읽는 운영 DB
-    maturity: 1
-    evidence:
-    - https://www.databricks.com/blog/agent-bricks-dais-2026
-    - https://databricks.com/blog/databricks-lakebase-generally-available
-    evidence_kind:
-    - official
   - id: databricks-ai-search
     name: AI Search (formerly Vector Search)
+    short: AI Search
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -504,6 +370,8 @@
     - official
   - id: databricks-managed-mcp
     name: Managed MCP servers
+    short: Managed MCP servers
+    scope: core
     status: preview
     status_date: 2026-06
     layers:
@@ -526,6 +394,8 @@
     - official
   - id: databricks-unity-ai-gateway
     name: Unity AI Gateway (Unity Gateway)
+    short: Unity AI Gateway
+    scope: core
     status: preview
     status_date: 2026-05
     layers:
@@ -547,54 +417,32 @@
     - https://docs.databricks.com/aws/en/ai-gateway/index/
     evidence_kind:
     - official
-  - id: databricks-mlflow3-genai
-    name: MLflow 3 GenAI (Tracing, Evaluation, Production monitoring)
-    status: GA
-    status_date: 2025-06
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 1
-      GOV: 0
-      OBS: 2
-    x: 0
-    y: 0
-    xy_reason: 용도 중립 관측·평가 도구
-    maturity: 4
-    evidence:
-    - https://www.databricks.com/blog/mlflow-30-unified-ai-experimentation-observability-and-governance
-    - https://docs.databricks.com/aws/mlflow3/genai/eval-monitor/production-monitoring
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 2
     L3: 1
-    L4: 2
-    L5: 2
+    L4: 0
+    L5: 1
     L6: 2
-    L7: 2
+    L7: 1
     GOV: 2
-    OBS: 2
+    OBS: 1
   depth:
     L1: 2
     L2: 2
     L3: 0
-    L4: 1
-    L5: 1
-    L6: 5
-    L7: 3
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 0
     GOV: 2
-    OBS: 1
-  x: -0.09
-  y: 0.09
-  maturity: 5
+    OBS: 0
+  x: -0.6
+  y: -0.4
+  maturity: 3
   maturity_claimed: 5
-  adjustments: []
+  adjustments:
+  - '성숙도 5→3: L4 출력 검증은 실행·검증 층 핵심 기능이 있어야 함'
 - vendor: google
   name: Google Cloud
   full_name: Google Cloud
@@ -603,6 +451,8 @@
   products:
   - id: google-knowledge-catalog
     name: Knowledge Catalog (구 Dataplex Universal Catalog)
+    short: Knowledge Catalog
+    scope: core
     status: GA
     status_date: 2026-04
     layers:
@@ -628,6 +478,8 @@
     - official
   - id: google-okf
     name: Open Knowledge Format (OKF)
+    short: Open Knowledge Format
+    scope: core
     status: announced
     status_date: 2026-06
     layers:
@@ -652,6 +504,8 @@
     - secondary
   - id: google-looker-semantic
     name: Looker 시맨틱 레이어 (LookML) + Looker MCP
+    short: Looker 시맨틱 레이어 + Looker MCP
+    scope: core
     status: GA
     status_date: 2026-04
     layers:
@@ -675,6 +529,8 @@
     - official
   - id: google-conversational-analytics
     name: Conversational Analytics (BigQuery/Looker) + CA API
+    short: Conversational Analytics + CA API
+    scope: app
     status: GA
     status_date: 2026-07
     layers:
@@ -697,6 +553,8 @@
     - official
   - id: google-bigquery-spanner-graph
     name: BigQuery Graph / Spanner Graph
+    short: BigQuery Graph / Spanner Graph
+    scope: core
     status: preview
     status_date: 2026-04
     layers:
@@ -719,55 +577,10 @@
     - https://docs.cloud.google.com/spanner/docs/graph/overview
     evidence_kind:
     - official
-  - id: google-agent-platform
-    name: Gemini Enterprise Agent Platform (Agent Runtime·ADK·Studio·Evaluation·Observability)
-    status: GA
-    status_date: 2026-07
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 2
-    x: 1
-    y: 1
-    xy_reason: 장기 실행 에이전트와 도구 실행이 중심. Optimizer가 실패를 묶어 지시문 개선을 제안
-    maturity: 4
-    evidence:
-    - https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform
-    - https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise-agent-platform
-    evidence_kind:
-    - official
-  - id: google-memory-bank
-    name: Memory Bank + Sessions
-    status: GA
-    status_date: 2025-12
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 대화에서 에이전트가 기억을 자동 생성·갱신
-    maturity: 5
-    evidence:
-    - https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes
-    - https://docs.cloud.google.com/agent-builder/agent-engine/memory-bank/overview
-    - https://docs.cloud.google.com/agent-builder/release-notes
-    evidence_kind:
-    - official
   - id: google-agent-governance
     name: Agent Identity / Agent Registry / Agent Gateway + Model Armor
+    short: Agent Identity / Agent Registry / Agent Gateway + Model Armor
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -791,6 +604,8 @@
     - official
   - id: google-vertex-search-rag
     name: Vertex AI Search / RAG Engine
+    short: Vertex AI Search / RAG Engine
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -813,6 +628,8 @@
     - official
   - id: google-gemini-enterprise
     name: Gemini Enterprise (구 Agentspace)
+    short: Gemini Enterprise
+    scope: app
     status: announced
     status_date: 2026-04
     layers:
@@ -836,6 +653,8 @@
     - official
   - id: google-mcp-toolbox
     name: MCP Toolbox for Databases + 관리형 MCP 서버
+    short: MCP Toolbox for Databases + 관리형 MCP 서버
+    scope: core
     status: GA
     status_date: 2026-04
     layers:
@@ -856,55 +675,32 @@
     - https://cloud.google.com/blog/products/databases/whats-new-for-google-cloud-databases-at-next26
     evidence_kind:
     - official
-  - id: google-a2a
-    name: Agent2Agent (A2A) 프로토콜
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 1
-      OBS: 0
-    x: 1
-    y: 0
-    xy_reason: 에이전트 간 작업 위임 전송 규격, 컨텍스트 내용 자체에는 중립
-    maturity: 1
-    evidence:
-    - https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes
-    - https://opensource.googleblog.com/search/label/A2April
-    evidence_kind:
-    - official
-    - secondary
   coverage:
     L1: 2
-    L2: 2
-    L3: 2
-    L4: 2
-    L5: 2
-    L6: 2
-    L7: 2
-    GOV: 2
-    OBS: 2
-  depth:
-    L1: 4
     L2: 2
     L3: 2
     L4: 1
     L5: 1
     L6: 2
-    L7: 3
-    GOV: 5
+    L7: 2
+    GOV: 2
     OBS: 1
-  x: -0.17
-  y: -0.42
-  maturity: 5
+  depth:
+    L1: 2
+    L2: 2
+    L3: 2
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 1
+    GOV: 3
+    OBS: 0
+  x: -0.57
+  y: -1.0
+  maturity: 4
   maturity_claimed: 5
-  adjustments: []
+  adjustments:
+  - '성숙도 5→4: L5 폐루프는 기억·이력과 관측·평가가 모두 있어야 함'
 - vendor: microsoft
   name: Microsoft
   full_name: Microsoft
@@ -913,6 +709,8 @@
   products:
   - id: microsoft-fabric-iq-ontology
     name: Fabric IQ Ontology (+ Graph, ontology agent)
+    short: Fabric IQ Ontology
+    scope: core
     status: preview
     status_date: 2026-07
     layers:
@@ -939,6 +737,8 @@
     - secondary
   - id: microsoft-powerbi-semantic-model
     name: Power BI semantic model (+ Modeling/Authoring MCP)
+    short: Power BI semantic model
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -962,6 +762,8 @@
     - official
   - id: microsoft-fabric-data-agent
     name: Fabric data agent
+    short: Fabric data agent
+    scope: app
     status: GA
     status_date: 2026-03
     layers:
@@ -986,6 +788,8 @@
     - secondary
   - id: microsoft-work-iq
     name: Work IQ (API / MCP / CLI)
+    short: Work IQ
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -1010,6 +814,8 @@
     - secondary
   - id: microsoft-copilot-connectors
     name: Copilot connectors (synced / federated MCP)
+    short: Copilot connectors
+    scope: core
     status: GA
     status_date: 2026-03
     layers:
@@ -1035,6 +841,8 @@
     - secondary
   - id: microsoft-copilot-studio
     name: Copilot Studio (knowledge, agent flows, Work IQ / Foundry IQ tools)
+    short: Copilot Studio
+    scope: app
     status: GA
     status_date: 2026-10
     layers:
@@ -1060,6 +868,8 @@
     - secondary
   - id: microsoft-foundry-iq
     name: Foundry IQ / Azure AI Search agentic retrieval
+    short: Foundry IQ / Azure AI Search agentic retrieval
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -1083,78 +893,10 @@
     evidence_kind:
     - official
     - secondary
-  - id: microsoft-foundry-agent-service
-    name: Foundry Agent Service (hosted agents, Memory, Toolboxes, evals, guardrails)
-    status: preview
-    status_date: 2026-06
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 2
-      L6: 1
-      L7: 2
-      GOV: 1
-      OBS: 2
-    x: 1
-    y: 2
-    xy_reason: 도구 실행 런타임 + 대화에서 사용자·절차 기억을 자동 추출·통합
-    maturity: 5
-    evidence:
-    - https://devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-build-2026/
-    - https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-memory
-    evidence_kind:
-    - official
-  - id: microsoft-agent-framework
-    name: Microsoft Agent Framework (successor to Semantic Kernel / AutoGen)
-    status: GA
-    status_date: 2026-06
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 1
-      L6: 2
-      L7: 1
-      GOV: 0
-      OBS: 1
-    x: 1
-    y: 1
-    xy_reason: 개발자용 오케스트레이션 SDK, 스킬·메모리·미들웨어로 런타임 조립
-    maturity: 3
-    evidence:
-    - https://devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-build-2026/
-    - https://mc.merill.net/message/AZ563561
-    evidence_kind:
-    - official
-    - secondary
-  - id: microsoft-graphrag
-    name: GraphRAG / LazyGraphRAG (open source)
-    status: GA
-    status_date: 2024-12
-    layers:
-      L1: 0
-      L2: 0
-      L3: 2
-      L4: 0
-      L5: 0
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 1
-    xy_reason: 문서에서 그래프·커뮤니티 요약을 자동 추출해 질의 시 활용, 분석·이해용
-    maturity: 1
-    evidence:
-    - https://www.microsoft.com/en-us/research/blog/moving-to-graphrag-1-0-streamlining-ergonomics-for-developers-and-users/
-    - https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/
-    evidence_kind:
-    - official
   - id: microsoft-purview-ai
     name: Microsoft Purview (DSPM for AI, DLP, audit)
+    short: Microsoft Purview
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -1180,6 +922,8 @@
     - secondary
   - id: microsoft-entra-agent-id
     name: Entra Agent ID + Agent 365
+    short: Entra Agent ID + Agent 365
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -1206,26 +950,26 @@
     L1: 2
     L2: 2
     L3: 2
-    L4: 2
-    L5: 2
-    L6: 2
-    L7: 2
-    GOV: 2
-    OBS: 2
-  depth:
-    L1: 4
-    L2: 1
-    L3: 2
     L4: 1
     L5: 1
     L6: 2
-    L7: 2
-    GOV: 3
+    L7: 1
+    GOV: 2
     OBS: 1
-  x: 0.17
-  y: 0.0
-  maturity: 5
-  maturity_claimed: 5
+  depth:
+    L1: 3
+    L2: 1
+    L3: 1
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 0
+    GOV: 3
+    OBS: 0
+  x: 0.14
+  y: -0.43
+  maturity: 3
+  maturity_claimed: 3
   adjustments: []
 - vendor: anthropic
   name: Anthropic
@@ -1235,6 +979,8 @@
   products:
   - id: anthropic-mcp
     name: Model Context Protocol
+    short: Model Context Protocol
+    scope: core
     status: GA
     status_date: 2025-12
     layers:
@@ -1255,120 +1001,31 @@
     - https://www.techrepublic.com/article/news-anthropic-agent-skills-foundation-handover/
     evidence_kind:
     - secondary
-  - id: anthropic-agent-skills
-    name: Agent Skills
-    status: GA
-    status_date: 2026-10
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 0
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: -1
-    xy_reason: 사람이 작성한 절차 패키지, 필요 시 점진적 로드
-    maturity: 2
-    evidence:
-    - https://www.techrepublic.com/article/news-anthropic-agent-skills-foundation-handover/
-    evidence_kind:
-    - secondary
-  - id: anthropic-context-editing-memory-tool
-    name: Context editing + Memory tool (API)
-    status: preview
-    status_date: 2025-09
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 에이전트가 스스로 기억을 쓰고 창을 정리
-    maturity: 1
-    evidence:
-    - https://claude.com/blog/context-management
-    evidence_kind:
-    - official
-  - id: anthropic-compaction
-    name: Server-side compaction
-    status: preview
-    status_date: 2026-01
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 런타임 자동 요약
-    maturity: 1
-    evidence:
-    - https://platform.claude.com/cookbook/tool-use-context-engineering-context-engineering-tools
-    evidence_kind:
-    - official
-  - id: anthropic-managed-agents-memory
-    name: Claude Managed Agents + Memory
-    status: preview
-    status_date: 2026-04
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 2
-      L7: 2
-      GOV: 2
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 호스팅 에이전트가 세션 경험을 기억에 축적, 범위 권한·감사·롤백
-    maturity: 5
-    evidence:
-    - https://claude.com/blog/claude-managed-agents-memory
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 0
     L3: 0
-    L4: 2
-    L5: 2
-    L6: 2
-    L7: 2
-    GOV: 2
+    L4: 0
+    L5: 0
+    L6: 0
+    L7: 0
+    GOV: 0
     OBS: 0
   depth:
     L1: 1
     L2: 0
     L3: 0
-    L4: 1
-    L5: 2
-    L6: 3
-    L7: 1
-    GOV: 1
+    L4: 0
+    L5: 0
+    L6: 0
+    L7: 0
+    GOV: 0
     OBS: 0
-  x: 0.6
-  y: 1.2
-  maturity: 4
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→4: L5 폐루프는 기억·이력과 관측·평가가 모두 있어야 함'
+  x: 1.0
+  y: 1.0
+  maturity: 2
+  maturity_claimed: 2
+  adjustments: []
 - vendor: openai
   name: OpenAI
   full_name: OpenAI
@@ -1377,6 +1034,8 @@
   products:
   - id: openai-frontier
     name: OpenAI Frontier
+    short: OpenAI Frontier
+    scope: core
     status: announced
     status_date: 2026-02
     layers:
@@ -1401,6 +1060,8 @@
     - secondary
   - id: openai-company-knowledge
     name: ChatGPT Company knowledge
+    short: ChatGPT Company knowledge
+    scope: app
     status: GA
     status_date: 2025-10
     layers:
@@ -1423,6 +1084,8 @@
     - secondary
   - id: openai-connector-registry
     name: AgentKit Connector Registry
+    short: AgentKit Connector Registry
+    scope: core
     status: GA
     status_date: 2025-10
     layers:
@@ -1443,52 +1106,30 @@
     - https://openai.com/blog/introducing-agentkit
     evidence_kind:
     - official
-  - id: openai-agents-sdk
-    name: Agents SDK
-    status: GA
-    status_date: 2025-03
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 1
-    xy_reason: 코드 기반 오케스트레이션·가드레일
-    maturity: 4
-    evidence:
-    - https://openai.com/blog/introducing-agentkit
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 1
     L3: 0
     L4: 0
     L5: 1
-    L6: 2
-    L7: 2
+    L6: 0
+    L7: 0
     GOV: 2
     OBS: 0
   depth:
-    L1: 3
+    L1: 2
     L2: 0
     L3: 0
     L4: 0
     L5: 0
-    L6: 1
-    L7: 1
-    GOV: 3
+    L6: 0
+    L7: 0
+    GOV: 2
     OBS: 0
-  x: 0.25
-  y: 0.25
-  maturity: 4
-  maturity_claimed: 4
+  x: 0.5
+  y: -0.5
+  maturity: 3
+  maturity_claimed: 3
   adjustments: []
 - vendor: glean
   name: Glean
@@ -1498,6 +1139,8 @@
   products:
   - id: glean-enterprise-graph
     name: Enterprise Graph
+    short: Enterprise Graph
+    scope: core
     status: GA
     status_date: 2025-09
     layers:
@@ -1520,6 +1163,8 @@
     - official
   - id: glean-personal-graph
     name: Personal Graph
+    short: Personal Graph
+    scope: core
     status: GA
     status_date: 2026-02
     layers:
@@ -1542,6 +1187,8 @@
     - official
   - id: glean-agents
     name: Glean Agents
+    short: Glean Agents
+    scope: app
     status: GA
     status_date: 2026-03
     layers:
@@ -1565,6 +1212,8 @@
     - official
   - id: glean-mcp-server
     name: Glean MCP server (read tools, memory)
+    short: MCP server
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -1589,6 +1238,8 @@
     - secondary
   - id: glean-independent-agents
     name: Independent agents / AI Gateway
+    short: Independent agents / AI Gateway
+    scope: core
     status: preview
     status_date: 2026-08
     layers:
@@ -1609,54 +1260,32 @@
     - https://siliconangle.com/?p=830044
     evidence_kind:
     - secondary
-  - id: glean-headless-agent-building
-    name: Headless agent building
-    status: announced
-    status_date: 2026-10
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 1
-    x: 1
-    y: -1
-    xy_reason: 에이전트를 코드로 버전관리·테스트
-    maturity: 4
-    evidence:
-    - https://www.unite.ai/?p=491722
-    evidence_kind:
-    - secondary
   coverage:
     L1: 2
     L2: 0
     L3: 2
-    L4: 2
+    L4: 0
     L5: 2
     L6: 1
-    L7: 2
+    L7: 0
     GOV: 2
-    OBS: 1
+    OBS: 0
   depth:
     L1: 2
     L2: 0
     L3: 2
-    L4: 2
+    L4: 0
     L5: 1
     L6: 0
-    L7: 1
+    L7: 0
     GOV: 2
     OBS: 0
-  x: 0.83
-  y: 0.67
-  maturity: 4
+  x: 0.75
+  y: 1.0
+  maturity: 3
   maturity_claimed: 5
   adjustments:
-  - '성숙도 5→4: L5 폐루프는 기억·이력과 관측·평가가 모두 있어야 함'
+  - '성숙도 5→3: L4 출력 검증은 실행·검증 층 핵심 기능이 있어야 함'
 - vendor: cohere
   name: Cohere
   full_name: Cohere
@@ -1665,6 +1294,8 @@
   products:
   - id: cohere-north
     name: North
+    short: North
+    scope: app
     status: GA
     status_date: 2025-08
     layers:
@@ -1687,6 +1318,8 @@
     - secondary
   - id: cohere-compass-cloud
     name: Compass Cloud (+MCP server)
+    short: Compass Cloud
+    scope: core
     status: preview
     status_date: 2026-09
     layers:
@@ -1707,470 +1340,41 @@
     - https://www.unite.ai/?p=473831
     evidence_kind:
     - secondary
-  - id: cohere-rerank
-    name: Rerank 4
-    status: GA
-    status_date: 2026-07
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 1
-    xy_reason: 질의별 후보 재정렬로 창 내용 선별
-    maturity: 1
-    evidence:
-    - https://docs.pinecone.io/nexus-release-notes/2026.md
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 0
     L3: 0
-    L4: 2
+    L4: 0
     L5: 0
     L6: 2
-    L7: 2
+    L7: 0
     GOV: 2
     OBS: 0
   depth:
     L1: 1
     L2: 0
     L3: 0
-    L4: 1
+    L4: 0
     L5: 0
-    L6: 2
-    L7: 1
-    GOV: 2
+    L6: 1
+    L7: 0
+    GOV: 1
     OBS: 0
-  x: -0.33
-  y: 0.67
+  x: -1.0
+  y: 1.0
   maturity: 2
   maturity_claimed: 2
   adjustments: []
-- vendor: langchain
-  name: LangChain
-  full_name: LangChain
-  category: agent_platform
-  source_file: research/vendors/others_ai_side.md
-  products:
-  - id: langchain-langchain-middleware
-    name: LangChain 1.x (middleware, FastMCP)
-    status: GA
-    status_date: 2026-10
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 0
-      GOV: 1
-      OBS: 0
-    x: 1
-    y: 1
-    xy_reason: 요약·도구 선택·승인을 미들웨어로 런타임 조작
-    maturity: 3
-    evidence:
-    - https://www.langchain.com/blog/langchain-langgraph-1dot0
-    - https://www.langchain.com/blog/october-2026-langchain-newsletter
-    evidence_kind:
-    - official
-  - id: langchain-langgraph
-    name: LangGraph
-    status: GA
-    status_date: 2025-10
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 1
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 0
-    xy_reason: 개발자가 그래프 정의, 실행 중 상태 보존·중단점
-    maturity: 3
-    evidence:
-    - https://www.langchain.com/blog/langchain-langgraph-1dot0
-    evidence_kind:
-    - official
-  - id: langchain-deep-agents
-    name: Deep Agents / Managed Deep Agents
-    status: GA
-    status_date: 2026-10
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 2
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 계획·하위 에이전트·파일시스템으로 스스로 컨텍스트 관리, 사용자 메모리
-    maturity: 3
-    evidence:
-    - https://www.langchain.com/blog/october-2026-langchain-newsletter
-    evidence_kind:
-    - official
-  - id: langchain-langsmith
-    name: LangSmith
-    status: GA
-    status_date: 2026-10
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 1
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 2
-    x: 0
-    y: 1
-    xy_reason: 트레이스·궤적 분석에서 개선·파인튜닝 데이터 생산
-    maturity: 5
-    evidence:
-    - https://www.langchain.com/blog/october-2026-langchain-newsletter
-    evidence_kind:
-    - official
-  coverage:
-    L1: 2
-    L2: 0
-    L3: 0
-    L4: 2
-    L5: 2
-    L6: 2
-    L7: 2
-    GOV: 1
-    OBS: 2
-  depth:
-    L1: 1
-    L2: 0
-    L3: 0
-    L4: 1
-    L5: 1
-    L6: 3
-    L7: 1
-    GOV: 0
-    OBS: 1
-  x: 0.75
-  y: 1.0
-  maturity: 2
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
-- vendor: llamaindex
-  name: LlamaIndex
-  full_name: LlamaIndex
-  category: memory_retrieval
-  source_file: research/vendors/others_ai_side.md
-  products:
-  - id: llamaindex-llamaparse
-    name: LlamaParse (formerly LlamaCloud)
-    status: GA
-    status_date: 2026-02
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: -1
-    xy_reason: 문서를 사전에 파싱·색인하는 파이프라인
-    maturity: 1
-    evidence:
-    - https://llamaindex.ai/blog/llamaindex-newsletter-2026-02-24
-    evidence_kind:
-    - official
-  - id: llamaindex-extract
-    name: LlamaExtract (Extract v2.5)
-    status: GA
-    status_date: 2026-10
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 1
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: -1
-    xy_reason: 사람이 정의한 스키마로 구조화 추출, 페이지 인용
-    maturity: 4
-    evidence:
-    - https://www.unite.ai/llamaindex-launches-extract-v2-5-with-accuracy-and-grounding-gains/
-    - https://llamaindex.ai/blog/llamaindex-newsletter-2026-02-24
-    evidence_kind:
-    - official
-    - secondary
-  - id: llamaindex-index
-    name: LlamaCloud Index
-    status: GA
-    status_date: 2026-02
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 0
-    xy_reason: 관리형 검색 색인
-    maturity: 1
-    evidence:
-    - https://llamaindex.ai/blog/llamaindex-newsletter-2026-02-24
-    evidence_kind:
-    - official
-  - id: llamaindex-llamaagents-workflows
-    name: LlamaAgents / Workflows
-    status: preview
-    status_date: 2026-02
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 0
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 0
-    xy_reason: 문서 업무 에이전트를 워크플로우로 정의
-    maturity: 2
-    evidence:
-    - https://llamaindex.ai/blog/llamaindex-newsletter-2026-02-24
-    - https://rywalker.com/research/llamaindex
-    evidence_kind:
-    - official
-    - secondary
-  - id: llamaindex-mcp
-    name: LlamaParse MCP server
-    status: GA
-    status_date: 2026-08
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 1
-    xy_reason: 에이전트가 파싱·추출·색인을 도구로 호출
-    maturity: 2
-    evidence:
-    - https://developers.llamaindex.ai/llamaparse/changelog/2026-08/
-    evidence_kind:
-    - official
-  coverage:
-    L1: 2
-    L2: 0
-    L3: 0
-    L4: 2
-    L5: 0
-    L6: 2
-    L7: 1
-    GOV: 0
-    OBS: 0
-  depth:
-    L1: 4
-    L2: 0
-    L3: 0
-    L4: 1
-    L5: 0
-    L6: 1
-    L7: 0
-    GOV: 0
-    OBS: 0
-  x: -0.4
-  y: -0.2
-  maturity: 2
-  maturity_claimed: 4
-  adjustments:
-  - '성숙도 4→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
-- vendor: mem0
-  name: Mem0
-  full_name: Mem0
-  category: memory_retrieval
-  source_file: research/vendors/others_ai_side.md
-  products:
-  - id: mem0-platform
-    name: Mem0 Platform (v3 algorithm, built-in graph memory)
-    status: GA
-    status_date: 2026-04
-    layers:
-      L1: 0
-      L2: 0
-      L3: 1
-      L4: 0
-      L5: 2
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 대화에서 사실을 자동 추출·축적하고 런타임 검색
-    maturity: 5
-    evidence:
-    - https://docs.mem0.ai/changelog/highlights
-    evidence_kind:
-    - official
-  - id: mem0-memory-decay
-    name: Memory Decay
-    status: GA
-    status_date: 2026-05
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 최근 사용 기억에 가중치, 자동 순위 조정
-    maturity: 5
-    evidence:
-    - https://docs.mem0.ai/changelog/highlights
-    evidence_kind:
-    - official
-  - id: mem0-oss-openmemory
-    name: Mem0 OSS / OpenMemory MCP
-    status: GA
-    status_date: 2026-04
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 자가 호스팅 기억 레이어, MCP로 여러 도구 공유
-    maturity: 2
-    evidence:
-    - https://docs.mem0.ai/changelog/sdk
-    evidence_kind:
-    - official
-  - id: mem0-integrations
-    name: Integrations (n8n, Zapier, Strands, coding-agent plugins)
-    status: GA
-    status_date: 2026-08
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 1
-    xy_reason: 워크플로우·코딩 에이전트에 기억 액션 삽입
-    maturity: 1
-    evidence:
-    - https://docs.mem0.ai/changelog/highlights
-    evidence_kind:
-    - official
-  coverage:
-    L1: 2
-    L2: 0
-    L3: 1
-    L4: 0
-    L5: 2
-    L6: 2
-    L7: 0
-    GOV: 0
-    OBS: 0
-  depth:
-    L1: 2
-    L2: 0
-    L3: 0
-    L4: 0
-    L5: 2
-    L6: 1
-    L7: 0
-    GOV: 0
-    OBS: 0
-  x: 0.25
-  y: 1.75
-  maturity: 2
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
 - vendor: zep
   name: Zep
   full_name: Zep
   category: knowledge_graph
   source_file: research/vendors/others_ai_side.md
   products:
-  - id: zep-graphiti
-    name: Graphiti
-    status: GA
-    status_date: ''
-    layers:
-      L1: 0
-      L2: 0
-      L3: 2
-      L4: 0
-      L5: 2
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 에피소드에서 엔티티·관계를 자동 추출, 시간 유효기간 관리
-    maturity: 2
-    evidence:
-    - https://github.com/getzep/graphiti
-    evidence_kind:
-    - official
   - id: zep-context-lake
     name: Context Lake / Context Graphs
+    short: Context Lake / Context Graphs
+    scope: core
     status: GA
     status_date: 2026-10
     layers:
@@ -2191,197 +1395,31 @@
     - https://www.getzep.com/
     evidence_kind:
     - official
-  - id: zep-agent-skills
-    name: Zep Agent Skills
-    status: announced
-    status_date: 2026-11
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 2
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 에이전트 실행 트레이스에서 스킬을 자동 생성
-    maturity: 5
-    evidence:
-    - https://www.getzep.com/
-    evidence_kind:
-    - official
-  - id: zep-agent-memory
-    name: Agent memory (user memory)
-    status: GA
-    status_date: ''
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 사용자별 최신 기억 자동 유지
-    maturity: 2
-    evidence:
-    - https://www.getzep.com/
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 0
     L3: 2
-    L4: 2
-    L5: 2
-    L6: 1
+    L4: 0
+    L5: 0
+    L6: 0
     L7: 0
     GOV: 2
     OBS: 0
   depth:
     L1: 1
     L2: 0
-    L3: 2
-    L4: 1
-    L5: 3
+    L3: 1
+    L4: 0
+    L5: 0
     L6: 0
     L7: 0
     GOV: 1
     OBS: 0
-  x: 0.25
-  y: 1.75
-  maturity: 3
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→3: L4 출력 검증은 실행·검증 층 핵심 기능이 있어야 함'
-- vendor: letta
-  name: Letta
-  full_name: Letta
-  category: memory_retrieval
-  source_file: research/vendors/others_ai_side.md
-  products:
-  - id: letta-code
-    name: Letta Code (+SDK)
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 로컬에서 행동하는 메모리 우선 에이전트
-    maturity: 5
-    evidence:
-    - https://letta.com/blog/our-next-phase
-    evidence_kind:
-    - official
-  - id: letta-context-repositories
-    name: Context Repositories (MemFS)
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 에이전트가 git 백업 파일 기억을 직접 편집
-    maturity: 5
-    evidence:
-    - https://letta.com/blog/our-next-phase
-    evidence_kind:
-    - official
-  - id: letta-reflection-subagents
-    name: Client-side reflection subagents (ex sleep-time)
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 2
-    xy_reason: 유휴 시간에 기억을 스스로 정리·통합
-    maturity: 5
-    evidence:
-    - https://letta.com/blog/our-next-phase
-    - https://letta.com/blog/sleep-time-compute
-    evidence_kind:
-    - official
-  - id: letta-api
-    name: Letta API (server)
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 1
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 0
-    y: 1
-    xy_reason: 에이전트 상태 원시 기능, 서버측 부가기능은 폐지 중
-    maturity: 2
-    evidence:
-    - https://letta.com/blog/our-next-phase
-    evidence_kind:
-    - official
-  coverage:
-    L1: 1
-    L2: 0
-    L3: 0
-    L4: 0
-    L5: 2
-    L6: 2
-    L7: 2
-    GOV: 0
-    OBS: 0
-  depth:
-    L1: 0
-    L2: 0
-    L3: 0
-    L4: 0
-    L5: 4
-    L6: 2
-    L7: 1
-    GOV: 0
-    OBS: 0
-  x: 0.25
-  y: 1.75
+  x: 0.0
+  y: 1.0
   maturity: 2
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
+  maturity_claimed: 2
+  adjustments: []
 - vendor: pinecone
   name: Pinecone
   full_name: Pinecone
@@ -2390,6 +1428,8 @@
   products:
   - id: pinecone-nexus
     name: Pinecone Nexus
+    short: Pinecone Nexus
+    scope: core
     status: GA
     status_date: 2026-08
     layers:
@@ -2412,94 +1452,6 @@
     evidence_kind:
     - official
     - secondary
-  - id: pinecone-assistant
-    name: Pinecone Assistant (+MCP server)
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 0
-    xy_reason: 업로드 문서 기반 인용 답변
-    maturity: 1
-    evidence:
-    - https://docs.pinecone.io/nexus-release-notes/2026.md
-    evidence_kind:
-    - official
-  - id: pinecone-mcp-server
-    name: Pinecone MCP server
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 1
-    xy_reason: 에이전트가 인덱스를 도구로 직접 조회
-    maturity: 2
-    evidence:
-    - https://docs.pinecone.io/nexus-release-notes/2026.md
-    evidence_kind:
-    - official
-  - id: pinecone-fulltext-search
-    name: Full-text search + Documents API
-    status: GA
-    status_date: 2026-09
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 0
-    xy_reason: 하이브리드 검색 기반
-    maturity: 1
-    evidence:
-    - https://docs.pinecone.io/nexus-release-notes/2026.md
-    evidence_kind:
-    - official
-  - id: pinecone-rbac
-    name: Expanded RBAC / SAML-SCIM
-    status: GA
-    status_date: 2026-07
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 2
-      OBS: 0
-    x: 0
-    y: -1
-    xy_reason: 조직·프로젝트 역할 관리
-    maturity: 1
-    evidence:
-    - https://docs.pinecone.io/nexus-release-notes/2026.md
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 0
@@ -2508,20 +1460,20 @@
     L5: 0
     L6: 2
     L7: 0
-    GOV: 2
+    GOV: 1
     OBS: 0
   depth:
-    L1: 4
+    L1: 1
     L2: 0
     L3: 0
     L4: 0
     L5: 0
-    L6: 2
+    L6: 1
     L7: 0
-    GOV: 1
+    GOV: 0
     OBS: 0
-  x: -0.6
-  y: -0.2
+  x: 0.0
+  y: -1.0
   maturity: 2
   maturity_claimed: 2
   adjustments: []
@@ -2531,54 +1483,10 @@
   category: memory_retrieval
   source_file: research/vendors/others_ai_side.md
   products:
-  - id: elastic-agent-builder
-    name: Agent Builder
-    status: GA
-    status_date: 2026-01
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 1
-      GOV: 2
-      OBS: 0
-    x: 0
-    y: 1
-    xy_reason: 인덱스·ES|QL을 도구로 런타임 검색, MCP·A2A
-    maturity: 2
-    evidence:
-    - https://www.businesswire.com/news/home/20260122544127/en/Elastic-Announces-General-Availability-of-Agent-Builder-with-Expanded-Capabilities
-    - https://www.helpnetsecurity.com/2026/01/23/elastic-agent-builder-2/
-    evidence_kind:
-    - official
-    - secondary
-  - id: elastic-workflows
-    name: Elastic Workflows
-    status: preview
-    status_date: 2026-01
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 0
-      L6: 0
-      L7: 2
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: -1
-    xy_reason: 사람이 정의한 실행 흐름
-    maturity: 2
-    evidence:
-    - https://www.constellationr.com/insights/news/elastics-agent-builder-generally-available-elastic-workflows-tech-preview
-    evidence_kind:
-    - secondary
   - id: elastic-hybrid-search-esql
     name: Hybrid search / ES|QL tools
+    short: Hybrid search / ES|QL tools
+    scope: core
     status: GA
     status_date: 2026-01
     layers:
@@ -2599,54 +1507,31 @@
     - https://www.elastic.co/search-labs/blog/context-engineering-for-agents
     evidence_kind:
     - official
-  - id: elastic-trace-feedback
-    name: Agent trace feedback (OTel)
-    status: GA
-    status_date: 2026-01
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 1
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 2
-    x: 0
-    y: 2
-    xy_reason: 에이전트 트레이스를 새 컨텍스트 소스로 재투입
-    maturity: 5
-    evidence:
-    - https://www.elastic.co/search-labs/blog/context-engineering-for-agents
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 0
     L3: 0
-    L4: 2
-    L5: 1
-    L6: 2
-    L7: 2
-    GOV: 2
-    OBS: 2
-  depth:
-    L1: 2
-    L2: 0
-    L3: 0
-    L4: 1
+    L4: 0
     L5: 0
     L6: 2
-    L7: 1
-    GOV: 1
-    OBS: 1
-  x: 0.0
-  y: 0.75
-  maturity: 4
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→4: L5 폐루프는 기억·이력과 관측·평가가 모두 있어야 함'
+    L7: 0
+    GOV: 0
+    OBS: 0
+  depth:
+    L1: 1
+    L2: 0
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 0
+    GOV: 0
+    OBS: 0
+  x: -1.0
+  y: 1.0
+  maturity: 1
+  maturity_claimed: 1
+  adjustments: []
 - vendor: writer
   name: Writer
   full_name: Writer
@@ -2655,6 +1540,8 @@
   products:
   - id: writer-knowledge-graph
     name: Knowledge Graph
+    short: Knowledge Graph
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -2677,6 +1564,8 @@
     - secondary
   - id: writer-enterprise-brain
     name: Enterprise Brain
+    short: Enterprise Brain
+    scope: core
     status: preview
     status_date: 2026-09
     layers:
@@ -2697,30 +1586,10 @@
     - https://www.cmswire.com/customer-experience/writer-launches-enterprise-brain-to-unify-ai-agent-context/
     evidence_kind:
     - secondary
-  - id: writer-agent-memory
-    name: Agent Memory
-    status: GA
-    status_date: 2026-09
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 2
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 2
-    xy_reason: 팀 결정·선호를 세션 넘어 자동 유지
-    maturity: 5
-    evidence:
-    - https://www.cmswire.com/customer-experience/writer-launches-enterprise-brain-to-unify-ai-agent-context/
-    evidence_kind:
-    - secondary
   - id: writer-ai-hq
     name: AI HQ (Agent Builder, Writer Home, Skills)
+    short: AI HQ
+    scope: app
     status: GA
     status_date: 2025-04
     layers:
@@ -2746,147 +1615,27 @@
     L2: 1
     L3: 2
     L4: 2
-    L5: 2
+    L5: 0
     L6: 0
-    L7: 2
+    L7: 0
     GOV: 2
     OBS: 0
   depth:
     L1: 1
     L2: 0
     L3: 2
-    L4: 2
-    L5: 1
-    L6: 0
-    L7: 1
-    GOV: 1
-    OBS: 0
-  x: 0.75
-  y: -0.25
-  maturity: 4
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→4: L5 폐루프는 기억·이력과 관측·평가가 모두 있어야 함'
-- vendor: contextual_ai
-  name: Contextual AI
-  full_name: Contextual AI
-  category: agent_platform
-  source_file: research/vendors/others_ai_side.md
-  products:
-  - id: contextual-agent-composer
-    name: Agent Composer
-    status: preview
-    status_date: 2026-01
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 2
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 0
-    xy_reason: 사람이 워크플로우 설계, 실행 중 에이전틱 검색으로 컨텍스트 관리
-    maturity: 4
-    evidence:
-    - https://docs.contextual.ai/release-notes/2026.md
-    evidence_kind:
-    - official
-  - id: contextual-datastores
-    name: Datastores (+Global Datastores)
-    status: GA
-    status_date: 2026-02
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: -1
-    xy_reason: 문서 사전 파싱·색인
-    maturity: 1
-    evidence:
-    - https://docs.contextual.ai/release-notes/2026.md
-    evidence_kind:
-    - official
-  - id: contextual-grounded-generation
-    name: Grounded generation / attributions
-    status: GA
-    status_date: 2026-02
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 2
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 0
-    xy_reason: 답변에 근거 출처 첨부로 검증 가능
-    maturity: 4
-    evidence:
-    - https://docs.contextual.ai/release-notes/2026.md
-    evidence_kind:
-    - official
-  - id: contextual-reranker-parser
-    name: Reranker / Parser
-    status: GA
-    status_date: ''
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 0
-      GOV: 0
-      OBS: 0
-    x: -1
-    y: 0
-    xy_reason: 질의별 문서 선별
-    maturity: 1
-    evidence:
-    - https://contextual.ai/platform
-    evidence_kind:
-    - official
-  coverage:
-    L1: 2
-    L2: 0
-    L3: 0
-    L4: 2
-    L5: 0
-    L6: 2
-    L7: 2
-    GOV: 0
-    OBS: 0
-  depth:
-    L1: 2
-    L2: 0
-    L3: 0
     L4: 1
     L5: 0
-    L6: 2
-    L7: 2
-    GOV: 0
+    L6: 0
+    L7: 0
+    GOV: 1
     OBS: 0
-  x: -0.5
-  y: -0.25
-  maturity: 2
+  x: 0.0
+  y: -1.0
+  maturity: 3
   maturity_claimed: 4
   adjustments:
-  - '성숙도 4→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
+  - '성숙도 4→3: L4 출력 검증은 실행·검증 층 핵심 기능이 있어야 함'
 - vendor: salesforce
   name: Salesforce
   full_name: Salesforce (Data 360 / Tableau / Informatica / MuleSoft)
@@ -2895,6 +1644,8 @@
   products:
   - id: salesforce-data360-mcp
     name: Data 360 MCP Server
+    short: Data 360 MCP Server
+    scope: core
     status: GA
     status_date: 2026-10
     layers:
@@ -2917,6 +1668,8 @@
     - secondary
   - id: salesforce-agent-context-engine
     name: Agent Context Engine
+    short: Agent Context Engine
+    scope: core
     status: announced
     status_date: 2026-12
     layers:
@@ -2939,6 +1692,8 @@
     - secondary
   - id: salesforce-data360-agent-memory-catalog
     name: Data 360 Agent Memory / Salesforce Catalog
+    short: Data 360 Agent Memory / Salesforce Catalog
+    scope: core
     status: announced
     status_date: 2026-10
     layers:
@@ -2961,6 +1716,8 @@
     - official
   - id: salesforce-tableau-semantics-knowledge
     name: Tableau Semantics + Tableau Knowledge
+    short: Tableau Semantics + Tableau Knowledge
+    scope: core
     status: preview
     status_date: 2026-10
     layers:
@@ -2985,6 +1742,8 @@
     - secondary
   - id: salesforce-informatica-headless
     name: Informatica Headless (Managed MCP)
+    short: Informatica Headless
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -3010,6 +1769,8 @@
     - secondary
   - id: salesforce-mulesoft-agent-fabric
     name: MuleSoft Agent Fabric (Registry, Scanners, Kill Switch)
+    short: MuleSoft Agent Fabric
+    scope: core
     status: GA
     status_date: 2026-01
     layers:
@@ -3063,6 +1824,8 @@
   products:
   - id: sap-business-ai-platform
     name: SAP Business AI Platform
+    short: Business AI Platform
+    scope: core
     status: announced
     status_date: 2026-05
     layers:
@@ -3085,6 +1848,8 @@
     - official
   - id: sap-business-data-cloud
     name: SAP Business Data Cloud
+    short: Business Data Cloud
+    scope: core
     status: GA
     status_date: 2025-02
     layers:
@@ -3107,6 +1872,8 @@
     - official
   - id: sap-knowledge-graph
     name: SAP Knowledge Graph
+    short: Knowledge Graph
+    scope: core
     status: announced
     status_date: 2027-03
     layers:
@@ -3130,6 +1897,8 @@
     - secondary
   - id: sap-ontology-manager
     name: SAP Ontology Manager
+    short: Ontology Manager
+    scope: core
     status: announced
     status_date: 2027-03
     layers:
@@ -3154,6 +1923,8 @@
     - secondary
   - id: sap-joule-studio
     name: Joule Studio / Joule Agents
+    short: Joule Studio / Joule Agents
+    scope: app
     status: GA
     status_date: 2026-05
     layers:
@@ -3176,6 +1947,8 @@
     - secondary
   - id: sap-joule-work
     name: Joule Work
+    short: Joule Work
+    scope: app
     status: announced
     status_date: 2026-05
     layers:
@@ -3200,27 +1973,28 @@
     L1: 2
     L2: 2
     L3: 2
-    L4: 2
+    L4: 0
     L5: 0
-    L6: 2
-    L7: 2
+    L6: 0
+    L7: 1
     GOV: 2
     OBS: 0
   depth:
     L1: 2
     L2: 2
     L3: 2
-    L4: 1
+    L4: 0
     L5: 0
-    L6: 2
-    L7: 2
+    L6: 0
+    L7: 0
     GOV: 1
     OBS: 0
-  x: 1.0
-  y: -0.67
-  maturity: 4
+  x: 0.5
+  y: -1.25
+  maturity: 3
   maturity_claimed: 4
-  adjustments: []
+  adjustments:
+  - '성숙도 4→3: L4 출력 검증은 실행·검증 층 핵심 기능이 있어야 함'
 - vendor: servicenow
   name: ServiceNow
   full_name: ServiceNow
@@ -3229,6 +2003,8 @@
   products:
   - id: servicenow-context-engine
     name: Context Engine
+    short: Context Engine
+    scope: core
     status: announced
     status_date: 2026-05
     layers:
@@ -3251,6 +2027,8 @@
     - official
   - id: servicenow-workflow-data-fabric
     name: Workflow Data Fabric
+    short: Workflow Data Fabric
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -3274,6 +2052,8 @@
     - official
   - id: servicenow-data-catalog
     name: ServiceNow Data Catalog (formerly data.world)
+    short: Data Catalog
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -3298,6 +2078,8 @@
     - secondary
   - id: servicenow-autonomous-data-analytics
     name: Autonomous Data Analytics
+    short: Autonomous Data Analytics
+    scope: app
     status: announced
     status_date: 2026-05
     layers:
@@ -3320,6 +2102,8 @@
     - official
   - id: servicenow-mcp-registry-control-tower
     name: MCP Registry + AI Control Tower / AI Gateway
+    short: MCP Registry + AI Control Tower / AI Gateway
+    scope: core
     status: preview
     status_date: 2026-05
     layers:
@@ -3346,7 +2130,7 @@
     L3: 2
     L4: 0
     L5: 2
-    L6: 2
+    L6: 0
     L7: 2
     GOV: 2
     OBS: 2
@@ -3356,12 +2140,12 @@
     L3: 2
     L4: 0
     L5: 2
-    L6: 1
+    L6: 0
     L7: 1
     GOV: 1
     OBS: 1
-  x: 0.4
-  y: 0.2
+  x: 1.0
+  y: 0.0
   maturity: 3
   maturity_claimed: 3
   adjustments: []
@@ -3373,6 +2157,8 @@
   products:
   - id: oracle-ai-database-26ai
     name: Oracle AI Database 26ai
+    short: AI Database 26ai
+    scope: core
     status: GA
     status_date: 2025-10
     layers:
@@ -3395,6 +2181,8 @@
     - official
   - id: oracle-select-ai-agent
     name: Select AI / Select AI Agent
+    short: Select AI / Select AI Agent
+    scope: app
     status: GA
     status_date: 2026-01
     layers:
@@ -3417,6 +2205,8 @@
     - official
   - id: oracle-adb-mcp-server
     name: Autonomous AI Database MCP Server
+    short: Autonomous AI Database MCP Server
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -3439,6 +2229,8 @@
     - official
   - id: oracle-fusion-ai-agent-studio
     name: Fusion AI Agent Studio + Agent Marketplace
+    short: Fusion AI Agent Studio + Agent Marketplace
+    scope: app
     status: GA
     status_date: 2025-10
     layers:
@@ -3463,26 +2255,26 @@
     L1: 2
     L2: 0
     L3: 0
-    L4: 2
+    L4: 0
     L5: 0
-    L6: 1
+    L6: 0
     L7: 2
     GOV: 2
     OBS: 0
   depth:
-    L1: 3
+    L1: 2
     L2: 0
     L3: 0
-    L4: 1
+    L4: 0
     L5: 0
     L6: 0
-    L7: 3
+    L7: 1
     GOV: 1
     OBS: 0
-  x: 0.25
-  y: -0.75
-  maturity: 3
-  maturity_claimed: 3
+  x: -0.5
+  y: -1.0
+  maturity: 2
+  maturity_claimed: 2
   adjustments: []
 - vendor: ibm
   name: IBM
@@ -3492,6 +2284,8 @@
   products:
   - id: ibm-watsonx-data-confluent
     name: watsonx.data + Confluent streaming
+    short: watsonx.data + Confluent streaming
+    scope: core
     status: GA
     status_date: 2026-03
     layers:
@@ -3514,6 +2308,8 @@
     - official
   - id: ibm-watsonx-data-integration-mcp
     name: watsonx.data integration MCP server
+    short: watsonx.data integration MCP server
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -3536,6 +2332,8 @@
     - official
   - id: ibm-agentic-data-integration
     name: Agentic Data Integration
+    short: Agentic Data Integration
+    scope: core
     status: preview
     status_date: 2026-10
     layers:
@@ -3558,6 +2356,8 @@
     - secondary
   - id: ibm-watsonx-orchestrate
     name: watsonx Orchestrate (+ AI Gateway)
+    short: watsonx Orchestrate
+    scope: app
     status: GA
     status_date: 2026-05
     layers:
@@ -3581,6 +2381,8 @@
     - secondary
   - id: ibm-data-intelligence-mcp
     name: Data Intelligence MCP server
+    short: Data Intelligence MCP server
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -3605,26 +2407,26 @@
     L1: 2
     L2: 1
     L3: 0
-    L4: 2
+    L4: 0
     L5: 1
-    L6: 2
+    L6: 0
     L7: 2
     GOV: 2
-    OBS: 2
+    OBS: 0
   depth:
     L1: 4
     L2: 0
     L3: 0
-    L4: 1
+    L4: 0
     L5: 0
-    L6: 1
+    L6: 0
     L7: 2
-    GOV: 2
-    OBS: 1
-  x: 0.0
+    GOV: 1
+    OBS: 0
+  x: -0.5
   y: 0.0
-  maturity: 3
-  maturity_claimed: 3
+  maturity: 2
+  maturity_claimed: 2
   adjustments: []
 - vendor: fivetran-dbt
   name: Fivetran+dbt
@@ -3634,6 +2436,8 @@
   products:
   - id: dbt-semantic-layer
     name: dbt Semantic Layer (MetricFlow)
+    short: dbt Semantic Layer
+    scope: core
     status: GA
     status_date: 2024-01
     layers:
@@ -3656,6 +2460,8 @@
     - official
   - id: dbt-mcp-server
     name: dbt MCP server (local/remote)
+    short: dbt MCP server
+    scope: core
     status: GA
     status_date: 2025-10
     layers:
@@ -3680,6 +2486,8 @@
     - secondary
   - id: dbt-agents-schema
     name: Agents Schema (open standard)
+    short: Agents Schema
+    scope: core
     status: announced
     status_date: 2026-06
     layers:
@@ -3702,6 +2510,8 @@
     - secondary
   - id: fivetran-connectors
     name: Fivetran connectors
+    short: Fivetran connectors
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -3755,6 +2565,8 @@
   products:
   - id: cube-semantic-layer
     name: Cube semantic layer
+    short: semantic layer
+    scope: core
     status: GA
     status_date: 2025-10
     layers:
@@ -3777,6 +2589,8 @@
     - official
   - id: cube-semantic-model-agent
     name: Semantic Model Agent
+    short: Semantic Model Agent
+    scope: core
     status: GA
     status_date: 2025-10
     layers:
@@ -3799,6 +2613,8 @@
     - official
   - id: cube-analytics-chat
     name: Analytics Chat / Workbook agents
+    short: Analytics Chat / Workbook agents
+    scope: app
     status: GA
     status_date: 2025-10
     layers:
@@ -3826,8 +2642,8 @@
     L3: 0
     L4: 0
     L5: 0
-    L6: 1
-    L7: 1
+    L6: 0
+    L7: 0
     GOV: 1
     OBS: 0
   depth:
@@ -3841,9 +2657,9 @@
     GOV: 0
     OBS: 0
   x: -2.0
-  y: -0.33
-  maturity: 2
-  maturity_claimed: 2
+  y: -1.0
+  maturity: 1
+  maturity_claimed: 1
   adjustments: []
 - vendor: atscale
   name: AtScale
@@ -3853,6 +2669,8 @@
   products:
   - id: atscale-semantic-layer-sml
     name: AtScale semantic layer + SML
+    short: semantic layer + SML
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -3875,6 +2693,8 @@
     - official
   - id: atscale-mcp-server
     name: AtScale MCP Server
+    short: MCP Server
+    scope: core
     status: GA
     status_date: 2025-12
     layers:
@@ -3930,6 +2750,8 @@
   products:
   - id: atlan-context-agents
     name: Context Agents
+    short: Context Agents
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -3952,6 +2774,8 @@
     - official
   - id: atlan-context-engineering-studio
     name: Context Engineering Studio
+    short: Context Engineering Studio
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -3975,6 +2799,8 @@
     - official
   - id: atlan-mcp-server
     name: Atlan MCP Server
+    short: MCP Server
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -3997,6 +2823,8 @@
     - official
   - id: atlan-data-graph-context-lakehouse
     name: Data Graph / Context Lakehouse
+    short: Data Graph / Context Lakehouse
+    scope: core
     status: GA
     status_date: 2026-04
     layers:
@@ -4051,6 +2879,8 @@
   products:
   - id: collibra-mcp-server
     name: Collibra MCP Server
+    short: MCP Server
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -4073,6 +2903,8 @@
     - official
   - id: collibra-ai-command-center
     name: AI Command Center
+    short: AI Command Center
+    scope: core
     status: preview
     status_date: 2026-05
     layers:
@@ -4097,6 +2929,8 @@
     - secondary
   - id: collibra-glossary-lineage
     name: Business glossary / lineage / catalog
+    short: Business glossary / lineage / catalog
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -4119,6 +2953,8 @@
     - official
   - id: collibra-trail-ml
     name: trail ML (acquired) — continuous AI governance
+    short: trail ML — continuous AI governance
+    scope: core
     status: announced
     status_date: 2026-10
     layers:
@@ -4172,6 +3008,8 @@
   products:
   - id: alation-aios
     name: AIOS (Alation Intelligence Operating System)
+    short: AIOS
+    scope: core
     status: announced
     status_date: 2026-07
     layers:
@@ -4194,30 +3032,10 @@
     evidence_kind:
     - official
     - secondary
-  - id: alation-agent-studio
-    name: Agent Studio (SDK + Agent Builder)
-    status: GA
-    status_date: 2025-11
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 0
-      L6: 1
-      L7: 0
-      GOV: 0
-      OBS: 1
-    x: 0
-    y: 0
-    xy_reason: 메타데이터 기반 에이전트를 만들고 평가 후 운영
-    maturity: 4
-    evidence:
-    - https://www.alation.com/blog/alation-ai-agent-sdk-smarter-ai-models/
-    evidence_kind:
-    - official
   - id: alation-mcp-server
     name: Alation AI Agent SDK / MCP server
+    short: AI Agent SDK / MCP server
+    scope: core
     status: preview
     status_date: 2025-12
     layers:
@@ -4242,9 +3060,9 @@
     L1: 2
     L2: 2
     L3: 0
-    L4: 1
+    L4: 0
     L5: 2
-    L6: 1
+    L6: 0
     L7: 0
     GOV: 2
     OBS: 1
@@ -4258,8 +3076,8 @@
     L7: 0
     GOV: 1
     OBS: 0
-  x: -0.67
-  y: -0.33
+  x: -1.0
+  y: -0.5
   maturity: 3
   maturity_claimed: 5
   adjustments:
@@ -4272,6 +3090,8 @@
   products:
   - id: datahub-context-platform
     name: DataHub Context Platform (Cloud)
+    short: Context Platform
+    scope: core
     status: preview
     status_date: 2026-09
     layers:
@@ -4296,6 +3116,8 @@
     - secondary
   - id: datahub-mcp-server
     name: DataHub MCP Server
+    short: MCP Server
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -4318,6 +3140,8 @@
     - official
   - id: datahub-agent-context-kit
     name: Agent Context Kit
+    short: Agent Context Kit
+    scope: core
     status: GA
     status_date: 2026-05
     layers:
@@ -4340,6 +3164,8 @@
     - official
   - id: datahub-core
     name: DataHub Core (OSS)
+    short: DataHub Core
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -4393,6 +3219,8 @@
   products:
   - id: neo4j-aura-agent
     name: Aura Agent
+    short: Aura Agent
+    scope: app
     status: GA
     status_date: 2026-02
     layers:
@@ -4415,6 +3243,8 @@
     - official
   - id: neo4j-context-engine
     name: Neo4j Context Engine
+    short: Context Engine
+    scope: core
     status: preview
     status_date: 2026-10
     layers:
@@ -4437,12 +3267,910 @@
     evidence_kind:
     - official
     - secondary
-  - id: neo4j-graphrag-a2a
-    name: GraphRAG retrievers + Gemini Enterprise A2A
+  coverage:
+    L1: 0
+    L2: 0
+    L3: 2
+    L4: 1
+    L5: 2
+    L6: 0
+    L7: 0
+    GOV: 1
+    OBS: 0
+  depth:
+    L1: 0
+    L2: 0
+    L3: 1
+    L4: 0
+    L5: 1
+    L6: 0
+    L7: 0
+    GOV: 0
+    OBS: 0
+  x: 1.0
+  y: 1.0
+  maturity: 2
+  maturity_claimed: 5
+  adjustments:
+  - '성숙도 5→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
+- vendor: denodo
+  name: Denodo
+  full_name: Denodo
+  category: data_platform
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: denodo-platform-mcp
+    name: Denodo Platform 9.4 내장 MCP
+    short: Platform 9.4 내장 MCP
+    scope: core
     status: GA
-    status_date: ''
+    status_date: 2026-03
+    layers:
+      L1: 2
+      L2: 2
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: -1
+    y: 0
+    xy_reason: 가상화된 데이터·지표 질의 중심, 의미는 사람이 정의하고 에이전트가 런타임에 탐색·질의
+    maturity: 2
+    evidence:
+    - https://www.denodo.com/en/press-release/2026-03-10/denodo-platform-94-accelerates-path-successful-agentic-ai-production
+    evidence_kind:
+    - official
+  - id: denodo-marketplace-agent
+    name: Data Marketplace 대화형 에이전트
+    short: Data Marketplace 대화형 에이전트
+    scope: app
+    status: GA
+    status_date: 2026-03
     layers:
       L1: 0
+      L2: 2
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: -2
+    y: 1
+    xy_reason: 데이터 제품에 대한 분석 질문 응답, 모호하면 되묻고 단계별로 데이터 탐색
+    maturity: 1
+    evidence:
+    - https://www.denodo.com/en/press-release/2026-03-10/denodo-platform-94-accelerates-path-successful-agentic-ai-production
+    evidence_kind:
+    - official
+  - id: denodo-vector-integration
+    name: 벡터 DB 연동
+    short: 벡터 DB 연동
+    scope: core
+    status: GA
+    status_date: 2026-03
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: -1
+    y: -1
+    xy_reason: 정형·비정형을 논리 계층에 등록하는 사전 구성 방식
+    maturity: 1
+    evidence:
+    - https://www.denodo.com/en/press-release/2026-03-10/denodo-platform-94-accelerates-path-successful-agentic-ai-production
+    evidence_kind:
+    - official
+  - id: denodo-ai-sdk
+    name: Denodo AI SDK (MCP 서버 포함)
+    short: AI SDK
+    scope: core
+    status: GA
+    status_date: 2025-07
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 1
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: -1
+    y: 0
+    xy_reason: RAG 에이전트에 가상화 데이터와 세션 보안을 제공하는 API 묶음
+    maturity: 1
+    evidence:
+    - https://www.datamanagementblog.com/denodo-ushers-in-the-age-of-agentic-ai-with-mcp-server-support
+    evidence_kind:
+    - official
+  - id: denodo-deepquery
+    name: Denodo DeepQuery
+    short: Denodo DeepQuery
+    scope: app
+    status: GA
+    status_date: 2025-09
+    layers:
+      L1: 0
+      L2: 1
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 1
+      GOV: 0
+      OBS: 0
+    x: -2
+    y: 2
+    xy_reason: 필요한 데이터를 스스로 결정해 가져오는 심층 분석, 숫자 질문 중심
+    maturity: 1
+    evidence:
+    - https://www.denodo.com/en/press-release/2025-09-16/denodo-platform-93-now-available-breakthrough-support-ai-innovation
+    evidence_kind:
+    - official
+  coverage:
+    L1: 2
+    L2: 2
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 0
+    GOV: 2
+    OBS: 0
+  depth:
+    L1: 3
+    L2: 1
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 0
+    L7: 0
+    GOV: 2
+    OBS: 0
+  x: -1.0
+  y: -0.33
+  maturity: 2
+  maturity_claimed: 2
+  adjustments: []
+- vendor: starburst
+  name: Starburst
+  full_name: Starburst
+  category: data_platform
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: starburst-aida
+    name: AIDA (AI Data Assistant)
+    short: AIDA
+    scope: app
+    status: GA
+    status_date: 2026-05
+    layers:
+      L1: 1
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: -1
+    y: 1
+    xy_reason: 전사 데이터에 대한 분석 질문을 추론하고 MCP로 외부 앱 컨텍스트를 끌어옴
+    maturity: 2
+    evidence:
+    - https://www.businesswire.com/news/home/20260413879669/en/
+    - https://futurumgroup.com/insights/starbursts-intelligence-platform-sets-out-to-tame-the-multi-cloud-ai-wilderness/
+    evidence_kind:
+    - official
+    - secondary
+  - id: starburst-ai-ready-data-products
+    name: AI-Ready Data Products
+    short: AI-Ready Data Products
+    scope: core
+    status: GA
+    status_date: 2026-05
+    layers:
+      L1: 0
+      L2: 2
+      L3: 0
+      L4: 1
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: -1
+    y: -2
+    xy_reason: 업무 규칙·메타데이터를 YAML 코드로 사람이 정의·배포
+    maturity: 2
+    evidence:
+    - https://futurumgroup.com/insights/starbursts-intelligence-platform-sets-out-to-tame-the-multi-cloud-ai-wilderness/
+    evidence_kind:
+    - secondary
+  - id: starburst-mcp-agent-api
+    name: Starburst MCP Server + Agent API
+    short: MCP Server + Agent API
+    scope: core
+    status: announced
+    status_date: 2025-10
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 1
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: -1
+    y: 0
+    xy_reason: 내외부 에이전트가 페더레이션 데이터에 접근하는 표준 관문
+    maturity: 2
+    evidence:
+    - https://siliconangle.com/?p=714821
+    evidence_kind:
+    - secondary
+  - id: starburst-enterprise-intelligence-platform
+    name: Starburst Enterprise Intelligence Platform
+    short: Enterprise Intelligence Platform
+    scope: core
+    status: announced
+    status_date: 2026-05
+    layers:
+      L1: 2
+      L2: 2
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 1
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: -1
+    y: 0
+    xy_reason: 페더레이션+데이터 제품 컨텍스트 계층+에이전트 인터페이스의 통합 구조
+    maturity: 2
+    evidence:
+    - https://futurumgroup.com/insights/starbursts-intelligence-platform-sets-out-to-tame-the-multi-cloud-ai-wilderness/
+    evidence_kind:
+    - secondary
+  coverage:
+    L1: 2
+    L2: 2
+    L3: 0
+    L4: 1
+    L5: 0
+    L6: 1
+    L7: 0
+    GOV: 2
+    OBS: 0
+  depth:
+    L1: 2
+    L2: 2
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 0
+    L7: 0
+    GOV: 2
+    OBS: 0
+  x: -1.0
+  y: -0.67
+  maturity: 2
+  maturity_claimed: 2
+  adjustments: []
+- vendor: teradata
+  name: Teradata
+  full_name: Teradata
+  category: data_platform
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: teradata-autonomous-knowledge-platform
+    name: Teradata Autonomous Knowledge Platform (Tera, AI Studio, Tera Agents)
+    short: Autonomous Knowledge Platform
+    scope: core
+    status: GA
+    status_date: 2026-07
+    layers:
+      L1: 0
+      L2: 2
+      L3: 0
+      L4: 0
+      L5: 1
+      L6: 1
+      L7: 1
+      GOV: 2
+      OBS: 0
+    x: -1
+    y: 0
+    xy_reason: 통제된 의미·계보를 에이전트에 주는 분석 중심 플랫폼, 운영 에이전트도 포함
+    maturity: 3
+    evidence:
+    - https://www.teradata.com/press-releases/2026/introducing-the-autonomous-knowledge-platform
+    - https://www.barchart.com/story/news/3296080/teradata-autonomous-knowledge-platform-reaches-general-availability-across-cloud-and-on-premises
+    evidence_kind:
+    - official
+    - secondary
+  - id: teradata-enterprise-vector-store
+    name: Teradata Enterprise Vector Store
+    short: Enterprise Vector Store
+    scope: core
+    status: GA
+    status_date: 2026-04
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: 0
+    y: 0
+    xy_reason: 문서·이미지·음성을 자동 처리해 색인, 에이전트가 MCP로 검색
+    maturity: 1
+    evidence:
+    - https://kr.teradata.com/press-releases/2026/teradata-enables-ai-agents
+    evidence_kind:
+    - official
+  - id: teradata-enterprise-mcp
+    name: Teradata Enterprise MCP
+    short: Enterprise MCP
+    scope: core
+    status: announced
+    status_date: 2026-01
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 1
+      GOV: 1
+      OBS: 0
+    x: -1
+    y: 0
+    xy_reason: 질의·시맨틱 검색·SQL 생성 도구를 에이전트에 제공
+    maturity: 2
+    evidence:
+    - https://www.teradata.com/press-releases/2026/teradata-unveils-enterprise-agentstack
+    evidence_kind:
+    - official
+  - id: teradata-agentengine-agentops
+    name: AgentEngine / AgentOps
+    short: AgentEngine / AgentOps
+    scope: core
+    status: announced
+    status_date: 2026-01
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 2
+      GOV: 2
+      OBS: 2
+    x: 1
+    y: 0
+    xy_reason: 전사 에이전트 실행·정책·평가·사람 개입 관리
+    maturity: 4
+    evidence:
+    - https://www.teradata.com/press-releases/2026/teradata-unveils-enterprise-agentstack
+    evidence_kind:
+    - official
+  coverage:
+    L1: 2
+    L2: 2
+    L3: 0
+    L4: 0
+    L5: 1
+    L6: 1
+    L7: 2
+    GOV: 2
+    OBS: 2
+  depth:
+    L1: 2
+    L2: 1
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 0
+    L7: 1
+    GOV: 2
+    OBS: 1
+  x: -0.25
+  y: 0.0
+  maturity: 4
+  maturity_claimed: 4
+  adjustments: []
+- vendor: cloudera
+  name: Cloudera
+  full_name: Cloudera
+  category: data_platform
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: cloudera-sdx-lineage-federation
+    name: SDX + Octopai Lineage + Trino Federation
+    short: SDX + Octopai Lineage + Trino Federation
+    scope: core
+    status: announced
+    status_date: 2025-11
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 2
+      L6: 0
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: -1
+    y: -1
+    xy_reason: 하이브리드 전체 메타데이터·접근 정책·계보를 관리자가 통합 관리
+    maturity: 1
+    evidence:
+    - https://www.aap.com.au/aapreleases/globenewswire9578741/
+    evidence_kind:
+    - official
+  - id: cloudera-agent-studio
+    name: Cloudera Agent Studio 3.0
+    short: Agent Studio 3.0
+    scope: app
+    status: GA
+    status_date: 2026-08
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 2
+      L5: 0
+      L6: 0
+      L7: 2
+      GOV: 2
+      OBS: 1
+    x: 1
+    y: 0
+    xy_reason: 데이터 옆에서 에이전트 워크플로 실행, 가드레일·LLM 판정·감사 로그
+    maturity: 4
+    evidence:
+    - https://www.cloudera.com/blog/business/eliminating-the-enterprise-ai-governance-bottleneck-with-cloudera-agent-studio-3-0.html
+    - https://docs.cloudera.com/cdp-public-cloud/cloud/release-summaries/topics/announcement-202605.html
+    evidence_kind:
+    - official
+  - id: cloudera-mcp-servers
+    name: Cloudera MCP Servers
+    short: MCP Servers
+    scope: core
+    status: announced
+    status_date: ''
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: -1
+    y: 0
+    xy_reason: 플랫폼 내부의 통제된 데이터 게이트웨이
+    maturity: 1
+    evidence:
+    - https://www.cloudera.com/blog/technical/bringing-context-to-genai-with-cloudera-mpc-servers
+    evidence_kind:
+    - official
+  - id: cloudera-zero-copy-servicenow
+    name: Workflow Data Fabric Zero Copy Connector for ServiceNow
+    short: Workflow Data Fabric Zero Copy Connector for ServiceNow
+    scope: core
+    status: announced
+    status_date: 2026-05
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 1
+      GOV: 0
+      OBS: 0
+    x: 1
+    y: -1
+    xy_reason: 업무 워크플로 행동을 원천 데이터와 복사 없이 연결
+    maturity: 1
+    evidence:
+    - https://www.storagenewsletter.com/2026/06/01/servicenow-knowledge26-cloudera-launches-workflow-data-fabric-zero-copy-connector-for-servicenow/
+    evidence_kind:
+    - secondary
+  coverage:
+    L1: 2
+    L2: 0
+    L3: 0
+    L4: 0
+    L5: 2
+    L6: 0
+    L7: 1
+    GOV: 2
+    OBS: 0
+  depth:
+    L1: 3
+    L2: 0
+    L3: 0
+    L4: 0
+    L5: 1
+    L6: 0
+    L7: 0
+    GOV: 1
+    OBS: 0
+  x: -0.33
+  y: -0.67
+  maturity: 1
+  maturity_claimed: 1
+  adjustments: []
+- vendor: qlik
+  name: Qlik
+  full_name: Qlik
+  category: data_platform
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: qlik-mcp-server
+    name: Qlik MCP Server
+    short: MCP Server
+    scope: core
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 2
+      L2: 2
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: -2
+    y: 0
+    xy_reason: 분석 엔진 계산과 통제된 데이터를 외부 어시스턴트에 노출
+    maturity: 2
+    evidence:
+    - https://www.qlik.com/us/news/company/press-room/press-releases/qlik-brings-agentic-analytics-to-general-availability-and-launches-mcp-server-for-third-party-assistants
+    evidence_kind:
+    - official
+  - id: qlik-semantic-data-products
+    name: Qlik Semantic Layer / Data Products for Analytics
+    short: Semantic Layer / Data Products for Analytics
+    scope: core
+    status: announced
+    status_date: 2026-04
+    layers:
+      L1: 0
+      L2: 2
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 2
+      OBS: 1
+    x: -2
+    y: -2
+    xy_reason: 측정값·차원·관계와 품질 신호를 사람이 큐레이션
+    maturity: 1
+    evidence:
+    - https://www.qlik.com/us/news/company/press-room/press-releases/qlik-extends-analytics-from-answers-to-agentic-action
+    evidence_kind:
+    - official
+  - id: qlik-answers
+    name: Qlik Answers
+    short: Qlik Answers
+    scope: app
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 1
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 1
+      GOV: 0
+      OBS: 0
+    x: -2
+    y: 1
+    xy_reason: 정형 분석과 문서를 묶어 인용 포함 답을 조립
+    maturity: 4
+    evidence:
+    - https://www.qlik.com/us/news/company/press-room/press-releases/qlik-brings-agentic-analytics-to-general-availability-and-launches-mcp-server-for-third-party-assistants
+    evidence_kind:
+    - official
+  - id: qlik-discovery-predict-analytics-agents
+    name: Discovery / Predict / Analytics Agent
+    short: Discovery / Predict / Analytics Agent
+    scope: app
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 1
+      L6: 0
+      L7: 2
+      GOV: 0
+      OBS: 1
+    x: -1
+    y: 2
+    xy_reason: 핵심 지표를 스스로 감시해 이상 신호를 찾아냄
+    maturity: 2
+    evidence:
+    - https://www.qlik.com/us/news/company/press-room/press-releases/qlik-extends-analytics-from-answers-to-agentic-action
+    evidence_kind:
+    - official
+  - id: qlik-automate-agent
+    name: Qlik Automate Agent
+    short: Automate Agent
+    scope: app
+    status: announced
+    status_date: 2026-04
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 1
+      L5: 0
+      L6: 0
+      L7: 2
+      GOV: 0
+      OBS: 0
+    x: 2
+    y: 0
+    xy_reason: 자연어 요청으로 하위 시스템 워크플로·행동 실행
+    maturity: 2
+    evidence:
+    - https://www.qlik.com/us/news/company/press-room/press-releases/qlik-extends-analytics-from-answers-to-agentic-action
+    evidence_kind:
+    - official
+  coverage:
+    L1: 2
+    L2: 2
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 0
+    L7: 0
+    GOV: 2
+    OBS: 1
+  depth:
+    L1: 1
+    L2: 2
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 0
+    L7: 0
+    GOV: 1
+    OBS: 0
+  x: -2.0
+  y: -1.0
+  maturity: 2
+  maturity_claimed: 2
+  adjustments: []
+- vendor: stardog
+  name: Stardog
+  full_name: Stardog
+  category: knowledge_graph
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: stardog-semantic-ai-platform
+    name: Stardog Semantic AI Platform (Virtual Graphs, Inference, SHACL)
+    short: Semantic AI Platform
+    scope: core
+    status: GA
+    status_date: 2025-11
+    layers:
+      L1: 2
+      L2: 2
+      L3: 2
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 1
+      GOV: 0
+      OBS: 0
+    x: 0
+    y: -2
+    xy_reason: 사람이 설계한 온톨로지·규칙으로 원천을 연결하고 질의 시점에 추론
+    maturity: 4
+    evidence:
+    - https://www.stardog.com/product/
+    evidence_kind:
+    - official
+  - id: stardog-voicebox-mcp
+    name: Stardog Voicebox + Voicebox MCP Server
+    short: Voicebox + Voicebox MCP Server
+    scope: core
+    status: GA
+    status_date: 2025-11
+    layers:
+      L1: 0
+      L2: 0
+      L3: 2
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: 0
+    y: 1
+    xy_reason: 자연어를 그래프 질의로 바꿔 다중 에이전트가 계획·응답, 읽기 전용
+    maturity: 2
+    evidence:
+    - https://community.stardog.com/t/whats-new-in-stardog-11-2/5512
+    evidence_kind:
+    - official
+  - id: stardog-designer
+    name: Stardog Designer
+    short: Stardog Designer
+    scope: core
+    status: GA
+    status_date: 2025-11
+    layers:
+      L1: 0
+      L2: 1
+      L3: 2
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 0
+      OBS: 0
+    x: 0
+    y: -1
+    xy_reason: 사람이 온톨로지를 설계하되 AI 제안 보조
+    maturity: 1
+    evidence:
+    - https://community.stardog.com/t/whats-new-in-stardog-11-2/5512
+    evidence_kind:
+    - official
+  - id: stardog-cloud-mcp
+    name: Stardog Cloud MCP (Bedrock AgentCore 연동)
+    short: Cloud MCP
+    scope: core
+    status: GA
+    status_date: 2026-07
+    layers:
+      L1: 2
+      L2: 0
+      L3: 2
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 0
+      OBS: 0
+    x: 0
+    y: 0
+    xy_reason: 외부 에이전트가 지식그래프를 시맨틱 계층으로 질의
+    maturity: 1
+    evidence:
+    - https://aws-news.com/article/2026-07-10-build-a-semantic-layer-for-agentic-ai-on-aws-with-stardog-and-amazon-bedrock-agentcore
+    evidence_kind:
+    - secondary
+  coverage:
+    L1: 2
+    L2: 2
+    L3: 2
+    L4: 0
+    L5: 0
+    L6: 2
+    L7: 1
+    GOV: 1
+    OBS: 0
+  depth:
+    L1: 2
+    L2: 1
+    L3: 4
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 0
+    GOV: 0
+    OBS: 0
+  x: 0.0
+  y: -0.5
+  maturity: 2
+  maturity_claimed: 4
+  adjustments:
+  - '성숙도 4→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
+- vendor: graphwise
+  name: Graphwise
+  full_name: Graphwise
+  category: knowledge_graph
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: graphwise-graphdb
+    name: GraphDB 11.x (MCP)
+    short: GraphDB 11.x
+    scope: core
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 2
+      L2: 0
+      L3: 2
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 0
+      OBS: 0
+    x: 0
+    y: -1
+    xy_reason: 큐레이션된 RDF 지식그래프를 에이전트가 MCP로 조회
+    maturity: 1
+    evidence:
+    - https://graphwise.ai/news/
+    evidence_kind:
+    - official
+  - id: graphwise-graph-modeling
+    name: Graph Modeling (구 PoolParty 10.x)
+    short: Graph Modeling
+    scope: core
+    status: GA
+    status_date: 2026-03
+    layers:
+      L1: 0
+      L2: 2
+      L3: 2
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: 0
+    y: -2
+    xy_reason: 택소노미·온톨로지를 사람이 관리, AI 빌더가 보조
+    maturity: 1
+    evidence:
+    - https://graphwise.ai/news/
+    evidence_kind:
+    - official
+  - id: graphwise-graphrag
+    name: Graphwise GraphRAG
+    short: Graphwise GraphRAG
+    scope: core
+    status: GA
+    status_date: 2026-05
+    layers:
+      L1: 1
       L2: 0
       L3: 2
       L4: 0
@@ -4452,39 +4180,424 @@
       GOV: 0
       OBS: 0
     x: 0
+    y: 0
+    xy_reason: 지식그래프+벡터 검색을 MCP 도구로 묶어 질의별 근거 조립
+    maturity: 2
+    evidence:
+    - https://www.techtarget.com/searchDataManagement/news/366639196/Graphwise-aims-to-boost-AI-accuracy-with-GraphRAG-launch
+    - https://help.graphwise.ai/en/graphrag/release-notes/graphrag-1-2-0-release-notes.html
+    evidence_kind:
+    - official
+    - secondary
+  - id: graphwise-ai-context-platform
+    name: Graphwise Platform (AI Context Platform)
+    short: Graphwise Platform
+    scope: core
+    status: announced
+    status_date: 2026-09
+    layers:
+      L1: 0
+      L2: 2
+      L3: 2
+      L4: 1
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 0
+      OBS: 1
+    x: 0
+    y: -1
+    xy_reason: 그래프 기반 컨텍스트 계층에 평가 도구·n8n 자동화 추가
+    maturity: 4
+    evidence:
+    - https://aithority.com/machine-learning/graphwise-upgrades-its-ai-context-platform-to-help-enterprises-build-seamless-context-layers-and-unlock-smarter-multilingual-ai/
+    evidence_kind:
+    - secondary
+  coverage:
+    L1: 2
+    L2: 2
+    L3: 2
+    L4: 1
+    L5: 0
+    L6: 2
+    L7: 0
+    GOV: 1
+    OBS: 1
+  depth:
+    L1: 1
+    L2: 2
+    L3: 4
+    L4: 0
+    L5: 0
+    L6: 1
+    L7: 0
+    GOV: 0
+    OBS: 0
+  x: 0.0
+  y: -1.0
+  maturity: 2
+  maturity_claimed: 4
+  adjustments:
+  - '성숙도 4→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
+- vendor: coveo
+  name: Coveo
+  full_name: Coveo
+  category: memory_retrieval
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: coveo-hosted-mcp
+    name: Coveo Hosted MCP Server
+    short: Hosted MCP Server
+    scope: core
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: 0
     y: 1
-    xy_reason: 질의마다 그래프에서 관련 서브그래프를 찾아 조립
+    xy_reason: 통합 색인에서 질의별로 관련 근거를 골라 외부 LLM 앱에 제공
     maturity: 1
     evidence:
-    - https://neo4j.com/blog/news/knowledge-layer-agentic-systems-google-cloud/
+    - https://ir.coveo.com/en/news-events/press-releases/detail/474/coveo-announces-hosted-mcp-server-to-expand-enterprise-ai
+    evidence_kind:
+    - official
+  - id: coveo-ai-relevance-platform
+    name: Coveo AI-Relevance Platform (통합 색인)
+    short: AI-Relevance Platform
+    scope: core
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 2
+      OBS: 1
+    x: 0
+    y: 1
+    xy_reason: 권한 반영 색인, 사용 신호로 관련도가 자동 개선
+    maturity: 5
+    evidence:
+    - https://ir.coveo.com/en/news-events/press-releases/detail/474/coveo-announces-hosted-mcp-server-to-expand-enterprise-ai
+    evidence_kind:
+    - official
+  - id: coveo-rga
+    name: Relevance Generative Answering
+    short: Relevance Generative Answering
+    scope: app
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 1
+      GOV: 2
+      OBS: 0
+    x: 0
+    y: 1
+    xy_reason: 사용자 권한 내 문서만으로 근거 답 생성
+    maturity: 4
+    evidence:
+    - https://docs.coveo.com/en/pboe0358/
+    evidence_kind:
+    - official
+  - id: coveo-rag-as-a-service-aws
+    name: Coveo RAG-as-a-Service for AWS
+    short: RAG-as-a-Service for AWS
+    scope: core
+    status: announced
+    status_date: 2025-12
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 0
+      OBS: 0
+    x: 0
+    y: 1
+    xy_reason: AWS 에이전트 서비스에 검색 근거 공급
+    maturity: 1
+    evidence:
+    - https://www.coveo.com/en/company/news-releases/2025/coveo-introduces-rag-as-a-service-for-aws-agentic-ai-services
     evidence_kind:
     - official
   coverage:
     L1: 2
     L2: 0
-    L3: 2
-    L4: 1
-    L5: 2
+    L3: 0
+    L4: 0
+    L5: 0
     L6: 2
+    L7: 0
+    GOV: 2
+    OBS: 1
+  depth:
+    L1: 3
+    L2: 0
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 3
     L7: 0
     GOV: 1
     OBS: 0
+  x: 0.0
+  y: 1.0
+  maturity: 3
+  maturity_claimed: 5
+  adjustments:
+  - '성숙도 5→3: L4 출력 검증은 실행·검증 층 핵심 기능이 있어야 함'
+- vendor: sinequa
+  name: Sinequa (ChapsVision)
+  full_name: Sinequa (ChapsVision)
+  category: memory_retrieval
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: sinequa-mcp-server
+    name: Sinequa MCP Server
+    short: MCP Server
+    scope: core
+    status: announced
+    status_date: ''
+    layers:
+      L1: 2
+      L2: 1
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: 0
+    y: 1
+    xy_reason: 에이전트가 런타임에 검색 지침·필터·사내 용어를 조회해 스스로 질의 구성
+    maturity: 2
+    evidence:
+    - https://www.sinequa.com/wp-content/uploads/Sinequa-MCP-Server-Overview.html
+    evidence_kind:
+    - official
+  - id: sinequa-enterprise-ai-search
+    name: Sinequa Enterprise AI Search
+    short: Enterprise AI Search
+    scope: core
+    status: GA
+    status_date: ''
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: 0
+    y: 0
+    xy_reason: 200+ 원천을 권한과 함께 색인한 하이브리드 검색
+    maturity: 1
+    evidence:
+    - https://ressources.chapsvision.com/en-us/sinequa-by-chapsvision-trusted-enterprise-ai-search
+    evidence_kind:
+    - official
+  - id: sinequa-chapsagents
+    name: ChapsAgents
+    short: ChapsAgents
+    scope: app
+    status: GA
+    status_date: 2026-04
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 2
+      L5: 0
+      L6: 2
+      L7: 0
+      GOV: 2
+      OBS: 1
+    x: 1
+    y: 1
+    xy_reason: 검색 기반 위에서 전사 에이전트를 구성·조율·통제
+    maturity: 3
+    evidence:
+    - https://www.sinequa.com/resources/blog/scaling-ai-you-can-actually-trust-introducing-chapsagents/
+    evidence_kind:
+    - official
+  coverage:
+    L1: 2
+    L2: 1
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 2
+    L7: 0
+    GOV: 2
+    OBS: 0
+  depth:
+    L1: 2
+    L2: 0
+    L3: 0
+    L4: 0
+    L5: 0
+    L6: 2
+    L7: 0
+    GOV: 2
+    OBS: 0
+  x: 0.0
+  y: 0.5
+  maturity: 2
+  maturity_claimed: 2
+  adjustments: []
+- vendor: workato
+  name: Workato
+  full_name: Workato
+  category: agent_platform
+  source_file: research/vendors/others_enterprise_extra.md
+  products:
+  - id: workato-enterprise-mcp
+    name: Workato Enterprise MCP
+    short: Enterprise MCP
+    scope: core
+    status: GA
+    status_date: 2025-10
+    layers:
+      L1: 2
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 2
+      GOV: 2
+      OBS: 2
+    x: 2
+    y: -1
+    xy_reason: 기록 시스템 쓰기 행동을 사람이 만든 레시피 기반 MCP 서버로 제공
+    maturity: 2
+    evidence:
+    - https://www.workato.com/de-DE/agentic/mcp
+    - https://www.businesswire.com/news/home/20251001259763/en/Workato-Delivers-Industrys-First-Enterprise-MCP-Platform-for-AI-Agents
+    evidence_kind:
+    - official
+  - id: workato-production-mcp-servers
+    name: Workato Production-ready MCP Servers
+    short: Production-ready MCP Servers
+    scope: core
+    status: GA
+    status_date: 2026-02
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 2
+      L5: 0
+      L6: 0
+      L7: 2
+      GOV: 1
+      OBS: 0
+    x: 2
+    y: -1
+    xy_reason: 여러 시스템을 엮은 업무 절차를 기성 서버로 제공
+    maturity: 2
+    evidence:
+    - https://www.businesswire.com/news/home/20260205680021/en/Workato-Accelerates-Enterprise-AI-Adoption-with-Launch-of-Production-Ready-Model-Context-Protocol-Servers
+    evidence_kind:
+    - official
+  - id: workato-mcp-registry
+    name: Workato Enterprise MCP Registry
+    short: Enterprise MCP Registry
+    scope: core
+    status: announced
+    status_date: ''
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 0
+      L5: 0
+      L6: 0
+      L7: 0
+      GOV: 2
+      OBS: 0
+    x: 1
+    y: -1
+    xy_reason: 회사 내 MCP 서버 목록을 통제
+    maturity: 2
+    evidence:
+    - https://www.webull.com/news/15237139180315648
+    evidence_kind:
+    - secondary
+  - id: workato-one-agent-hub
+    name: Workato ONE Agent Hub
+    short: ONE Agent Hub
+    scope: core
+    status: GA
+    status_date: 2025-08
+    layers:
+      L1: 0
+      L2: 0
+      L3: 0
+      L4: 2
+      L5: 0
+      L6: 1
+      L7: 0
+      GOV: 1
+      OBS: 0
+    x: 1
+    y: -1
+    xy_reason: 지식 원천·전사 스킬 목록과 오케스트레이션을 API로 노출
+    maturity: 2
+    evidence:
+    - https://www.businesswire.com/news/home/20250819305476/en/Workato-Supercharges-ONE-The-Agentic-Core-for-AI-Ready-Enterprises
+    evidence_kind:
+    - official
+  coverage:
+    L1: 2
+    L2: 0
+    L3: 0
+    L4: 2
+    L5: 0
+    L6: 1
+    L7: 2
+    GOV: 2
+    OBS: 2
   depth:
     L1: 1
     L2: 0
-    L3: 3
-    L4: 0
-    L5: 1
-    L6: 2
-    L7: 0
-    GOV: 0
-    OBS: 0
-  x: 0.67
-  y: 0.67
+    L3: 0
+    L4: 2
+    L5: 0
+    L6: 0
+    L7: 2
+    GOV: 2
+    OBS: 1
+  x: 1.5
+  y: -1.0
   maturity: 2
-  maturity_claimed: 5
-  adjustments:
-  - '성숙도 5→2: L3 실행 게이트는 거버넌스(승인·정책) 핵심 기능이 있어야 함'
+  maturity_claimed: 2
+  adjustments: []
 - vendor: palantir
   name: Palantir
   full_name: Palantir
@@ -4493,6 +4606,8 @@
   products:
   - id: palantir-ontology
     name: Foundry Ontology (object/link/action types, interfaces)
+    short: Foundry Ontology
+    scope: core
     status: GA
     status_date: 2026-10
     layers:
@@ -4517,6 +4632,8 @@
     - official
   - id: palantir-aip-logic
     name: AIP Logic + Functions
+    short: AIP Logic + Functions
+    scope: app
     status: GA
     status_date: 2026-10
     layers:
@@ -4541,6 +4658,8 @@
     - official
   - id: palantir-chatbot-studio
     name: AIP Chatbot Studio (formerly AIP Agent Studio)
+    short: AIP Chatbot Studio
+    scope: app
     status: GA
     status_date: 2026-04
     layers:
@@ -4562,32 +4681,10 @@
     - https://www.palantir.com/docs/foundry/announcements/2026-04
     evidence_kind:
     - official
-  - id: palantir-procode-agents
-    name: Pro-code agents (Agent templates) + OSDK
-    status: announced
-    status_date: 2026-07
-    layers:
-      L1: 2
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 2
-      OBS: 0
-    x: 1
-    y: 1
-    xy_reason: 외부 SDK 에이전트 루프가 생성된 OSDK/OMCP 도구로 런타임에 온톨로지를 탐색·조작
-    maturity: 3
-    evidence:
-    - https://palantir.com/docs/foundry/agents/agent-templates/
-    - https://www.palantir.com/docs/foundry/announcements/2026-07
-    - https://www.palantir.com/docs/foundry/announcements/2026-10
-    evidence_kind:
-    - official
   - id: palantir-ontology-mcp
     name: Ontology MCP (OMCP)
+    short: Ontology MCP
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -4610,32 +4707,10 @@
     - https://palantir.com/docs/foundry/announcements/2026-03/
     evidence_kind:
     - official
-  - id: palantir-mcp
-    name: Palantir MCP (PMCP)
-    status: GA
-    status_date: 2026-06
-    layers:
-      L1: 2
-      L2: 0
-      L3: 1
-      L4: 0
-      L5: 0
-      L6: 1
-      L7: 0
-      GOV: 1
-      OBS: 0
-    x: 1
-    y: 1
-    xy_reason: 코딩 에이전트가 플랫폼 구조(온톨로지 타입·파이프라인)를 만드는 빌더용 — 데이터는 못 씀, tool search 로 런타임
-      도구 발견
-    maturity: 2
-    evidence:
-    - https://www.palantir.com/docs/foundry/palantir-mcp/
-    - https://www.palantir.com/docs/foundry/announcements/2026-06
-    evidence_kind:
-    - official
   - id: palantir-aip-analyst
     name: AIP Analyst
+    short: AIP Analyst
+    scope: app
     status: GA
     status_date: 2026-04
     layers:
@@ -4662,6 +4737,8 @@
     - secondary
   - id: palantir-ai-fde
     name: AI FDE (AI Forward Deployed Engineer)
+    short: AI FDE
+    scope: core
     status: GA
     status_date: 2026-03
     layers:
@@ -4686,6 +4763,8 @@
     - official
   - id: palantir-automate
     name: Automate (+ Autopilot)
+    short: Automate
+    scope: core
     status: GA
     status_date: 2026-07
     layers:
@@ -4710,6 +4789,8 @@
     - official
   - id: palantir-aip-evals-observability
     name: AIP Evals + AIP Observability + Workflow Lineage
+    short: AIP Evals + AIP Observability + Workflow Lineage
+    scope: core
     status: GA
     status_date: 2026-07
     layers:
@@ -4732,33 +4813,11 @@
     - https://www.palantir.com/docs/foundry/announcements/2026-07
     evidence_kind:
     - official
-  - id: palantir-aip-evolve
-    name: AIP Evolve
-    status: GA
-    status_date: 2026-09
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 1
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 2
-    x: 0
-    y: 2
-    xy_reason: AI FDE 에이전트 함대가 프롬프트·모델 후보를 스스로 만들고 평가로 검증해 개선안을 제안
-    maturity: 5
-    evidence:
-    - https://palantir.com/docs/foundry/aip-evolve/overview/
-    - https://www.palantir.com/docs/foundry/announcements/2026-09
-    - https://www.palantir.com/docs/foundry/announcements/2026-08
-    evidence_kind:
-    - official
   - id: palantir-governance
     name: Security & governance (Markings/CBAC, LLM marking allowlist, Global Branching,
       Registered models)
+    short: Security & governance
+    scope: core
     status: GA
     status_date: 2026-10
     layers:
@@ -4794,23 +4853,22 @@
     GOV: 2
     OBS: 2
   depth:
-    L1: 3
+    L1: 1
     L2: 0
     L3: 1
-    L4: 2
+    L4: 1
     L5: 0
-    L6: 4
-    L7: 7
-    GOV: 6
-    OBS: 2
-  x: 0.92
-  y: 0.08
+    L6: 1
+    L7: 4
+    GOV: 4
+    OBS: 1
+  x: 1.33
+  y: -0.5
   maturity: 4
-  maturity_claimed: 5
+  maturity_claimed: 4
   adjustments:
   - 'L2: palantir.md ''회사 전체 층 커버리지'' — 전용 시맨틱 레이어 없음, Insight/Quiver·Ontology SQL
     함수가 일부 대체 ◐'
-  - '성숙도 5→4: L5 폐루프는 기억·이력과 관측·평가가 모두 있어야 함'
 - vendor: snowflake
   name: Snowflake
   full_name: Snowflake
@@ -4819,6 +4877,8 @@
   products:
   - id: snowflake-semantic-views
     name: Semantic Views
+    short: Semantic Views
+    scope: core
     status: GA
     status_date: 2025-08
     layers:
@@ -4842,6 +4902,8 @@
     - official
   - id: snowflake-semantic-view-autopilot
     name: Semantic View Autopilot
+    short: Semantic View Autopilot
+    scope: core
     status: GA
     status_date: 2026-02
     layers:
@@ -4865,6 +4927,8 @@
     - official
   - id: snowflake-horizon-context
     name: Horizon Context (Semantic Studio, metadata connectors, lineage)
+    short: Horizon Context
+    scope: core
     status: announced
     status_date: 2026-06
     layers:
@@ -4888,6 +4952,8 @@
     - official
   - id: snowflake-cortex-sense
     name: Cortex Sense
+    short: Cortex Sense
+    scope: core
     status: preview
     status_date: 2026-07
     layers:
@@ -4911,6 +4977,8 @@
     - official
   - id: snowflake-cortex-analyst
     name: Cortex Analyst
+    short: Cortex Analyst
+    scope: app
     status: GA
     status_date: ''
     layers:
@@ -4933,6 +5001,8 @@
     - official
   - id: snowflake-cortex-search
     name: Cortex Search
+    short: Cortex Search
+    scope: core
     status: GA
     status_date: ''
     layers:
@@ -4953,32 +5023,10 @@
     - https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp
     evidence_kind:
     - official
-  - id: snowflake-cortex-agents
-    name: Cortex Agents (evaluations, Agent Sharing)
-    status: GA
-    status_date: 2025-11
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 2
-      L7: 1
-      GOV: 1
-      OBS: 2
-    x: 0
-    y: 0
-    xy_reason: 분석 도구와 커스텀 도구를 런타임에 고르는 오케스트레이터. 도구 목록은 사람이 구성
-    maturity: 2
-    evidence:
-    - https://docs.snowflake.com/release-notes/2025/other/2025-11-04-cortex-agents
-    - https://docs.snowflake.com/release-notes/2026/other/2026-03-13-cortex-agent-evaluations
-    - https://investors.snowflake.com/news/news-details/2026/Snowflake-Pioneers-New-Open-Framework-for-Interoperable-Enterprise-Data-and-AI/default.aspx
-    evidence_kind:
-    - official
   - id: snowflake-cowork
     name: Snowflake CoWork (formerly Snowflake Intelligence)
+    short: Snowflake CoWork
+    scope: app
     status: GA
     status_date: 2026-06
     layers:
@@ -5001,31 +5049,10 @@
     evidence_kind:
     - official
     - secondary
-  - id: snowflake-coco
-    name: Snowflake CoCo (formerly Cortex Code)
-    status: GA
-    status_date: 2026-03
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 1
-      L5: 0
-      L6: 2
-      L7: 2
-      GOV: 0
-      OBS: 0
-    x: 1
-    y: 1
-    xy_reason: 코드·파이프라인을 실제로 쓰는 에이전트, 필요한 시맨틱 뷰를 스스로 검색
-    maturity: 2
-    evidence:
-    - https://docs.snowflake.com/en/release-notes/2026/other/2026-03-09-cortex-code-snowsight-ga
-    - https://snowflake.com/en/blog/snowflake-coco-ai-coding-agent-modern-data-stack/
-    evidence_kind:
-    - official
   - id: snowflake-managed-mcp
     name: Snowflake-managed MCP server
+    short: Snowflake-managed MCP server
+    scope: core
     status: GA
     status_date: 2025-11
     layers:
@@ -5049,6 +5076,8 @@
     - official
   - id: snowflake-horizon-governance
     name: Horizon Catalog governance (Agent Identity, data protection policies)
+    short: Horizon Catalog governance
+    scope: core
     status: GA
     status_date: 2026-06
     layers:
@@ -5070,52 +5099,30 @@
     - https://www.businesswire.com/news/home/20260527677399/en/snowflake-announces-intent-to-acquire-natoma-providing-secure-connectivity-for-the-agentic-enterprise/
     evidence_kind:
     - official
-  - id: snowflake-ai-observability
-    name: AI Observability (TruLens)
-    status: GA
-    status_date: 2025-07
-    layers:
-      L1: 0
-      L2: 0
-      L3: 0
-      L4: 0
-      L5: 0
-      L6: 0
-      L7: 0
-      GOV: 0
-      OBS: 2
-    x: 0
-    y: 0
-    xy_reason: 용도 중립 평가·트레이싱 도구
-    maturity: 4
-    evidence:
-    - https://docs.snowflake.com/release-notes/2025/other/2025-07-31-ai-observability-ga
-    - https://docs.snowflake.com/user-guide/snowflake-cortex/ai-observability/evaluate-applications-trulens
-    evidence_kind:
-    - official
   coverage:
     L1: 2
     L2: 2
     L3: 1
-    L4: 1
+    L4: 0
     L5: 2
     L6: 2
-    L7: 2
+    L7: 0
     GOV: 2
-    OBS: 2
+    OBS: 1
   depth:
     L1: 2
     L2: 3
     L3: 0
     L4: 0
     L5: 1
-    L6: 4
-    L7: 1
+    L6: 1
+    L7: 0
     GOV: 2
-    OBS: 2
-  x: -0.67
-  y: -0.33
-  maturity: 5
+    OBS: 0
+  x: -1.14
+  y: -0.71
+  maturity: 3
   maturity_claimed: 5
   adjustments:
   - 'L3: snowflake.md ''회사 전체 층 커버리지'' — 시맨틱 뷰 안의 테이블 관계(조인)만 ◐, 독립 온톨로지 없음'
+  - '성숙도 5→3: L4 출력 검증은 실행·검증 층 핵심 기능이 있어야 함'

@@ -17,11 +17,14 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 ADJ = yaml.safe_load((ROOT / "tools" / "adjustments.yaml").read_text()) or {}
+_SC = yaml.safe_load((ROOT / "tools" / "scope.yaml").read_text()) or {}
+SCOPE = {pid: "agent_internal" for pid in _SC.get("X", [])} | {pid: "enterprise_agent_app" for pid in _SC.get("A", [])}
+EXCLUDED: list[dict] = []
 LAYERS = ["L1", "L2", "L3", "L4", "L5", "L6", "L7", "GOV", "OBS"]
 LAYER_NAMES = {
     "L1": "연결·원천", "L2": "의미(지표)", "L3": "관계·정체성", "L4": "절차·역할",
-    "L5": "기억·이력", "L6": "런타임 창 관리", "L7": "실행·검증",
-    "GOV": "거버넌스·권한", "OBS": "관측·평가",
+    "L5": "이력·계보", "L6": "컨텍스트 서빙·검색", "L7": "실행·검증",
+    "GOV": "거버넌스·권한", "OBS": "품질·관측",
 }
 CATEGORY_NAMES = {
     "data_platform": "데이터 플랫폼", "hyperscaler": "하이퍼스케일러", "ai_lab": "AI 연구소",
@@ -29,6 +32,18 @@ CATEGORY_NAMES = {
     "knowledge_graph": "지식그래프", "memory_retrieval": "기억·검색", "enterprise_app": "기업 앱",
     "ontology_platform": "온톨로지 플랫폼",
 }
+
+
+def short_name(name: str, vendor: str = "") -> str:
+    """표시용: 괄호 설명·이력 표기와, 회사 이름과 겹치는 접두어를 뗀다(남는 말이 2단어 이상일 때만)."""
+    n = re.sub(r"\s*[\(（][^)）]*[\)）]", "", name).strip() or name
+    first = vendor.split()[0] if vendor else ""
+    for pre in {vendor, first} - {""}:
+        if n.lower().startswith(pre.lower() + " "):
+            rest = n[len(pre):].strip()
+            if len(rest.split()) >= 2:
+                return rest
+    return n
 
 
 def level(v) -> int:
@@ -67,9 +82,14 @@ def load_vendors() -> list[dict]:
     for vid, v in vendors.items():
         prods = []
         for p in v.get("products") or []:
+            scope = SCOPE.get(p.get("id")) or p.get("scope") or "enterprise_context"
+            if scope == "agent_internal":
+                EXCLUDED.append({"vendor": v.get("name", vid), "name": p.get("name"), "id": p.get("id")})
+                continue
             lay = {k: level((p.get("layers") or {}).get(k)) for k in LAYERS}
             prods.append({
-                "id": p.get("id"), "name": p.get("name"), "status": p.get("status"),
+                "id": p.get("id"), "name": p.get("name"), "short": short_name(p.get("name") or "", v.get("name", vid)),
+                "scope": "app" if scope == "enterprise_agent_app" else "core", "status": p.get("status"),
                 "status_date": str(p.get("status_date") or ""),
                 "layers": lay,
                 "x": p.get("x"), "y": p.get("y"), "xy_reason": p.get("xy_reason", ""),
@@ -77,16 +97,19 @@ def load_vendors() -> list[dict]:
                 "evidence": [e.get("url") if isinstance(e, dict) else e for e in (p.get("evidence") or [])],
                 "evidence_kind": sorted({e.get("kind") for e in (p.get("evidence") or []) if isinstance(e, dict) and e.get("kind")}),
             })
-        cov = {k: max([p["layers"][k] for p in prods] or [0]) for k in LAYERS}
-        depth = {k: sum(1 for p in prods if p["layers"][k] == 2) for k in LAYERS}
+        core = [p for p in prods if p["scope"] == "core"]
+        if not core:
+            continue
+        cov = {k: max([p["layers"][k] for p in core] or [0]) for k in LAYERS}
+        depth = {k: sum(1 for p in core if p["layers"][k] == 2) for k in LAYERS}
         notes = []
         for k, o in (ADJ.get("coverage_overrides", {}).get(vid) or {}).items():
             if o["value"] > cov[k]:
                 cov[k] = o["value"]
                 notes.append(f"{k}: {o['reason']}")
-        xs = [p["x"] for p in prods if isinstance(p["x"], (int, float))]
-        ys = [p["y"] for p in prods if isinstance(p["y"], (int, float))]
-        mats = [p["maturity"] for p in prods if isinstance(p["maturity"], (int, float))]
+        xs = [p["x"] for p in core if isinstance(p["x"], (int, float))]
+        ys = [p["y"] for p in core if isinstance(p["y"], (int, float))]
+        mats = [p["maturity"] for p in core if isinstance(p["maturity"], (int, float))]
         claimed = max(mats) if mats else None
         mat = claimed
         for cap in ADJ.get("maturity_caps", []):
@@ -105,15 +128,16 @@ def load_vendors() -> list[dict]:
 
 def heatmap_md(vendors: list[dict]) -> str:
     def cell(v, k):
-        c = v["coverage"][k]
-        if c == 2:
-            return f"●{v['depth'][k]}"
-        return "◐" if c == 1 else ""
+        names = [p["short"] for p in v["products"] if p["scope"] == "core" and p["layers"][k] == 2]
+        if names:
+            return "<br>".join(names)
+        return "◐" if v["coverage"][k] == 1 else ""
     lines = [
         "# 회사 × 층 커버리지 히트맵",
         "",
         "> `tools/build_map.py` 가 `research/vendors/*.md` 에서 자동 생성. 직접 고치지 말 것.",
-        "> ●N = 그 층을 핵심 기능으로 가진 제품이 N개 / ◐ 부분·프리뷰·파트너 / 빈칸 근거 없음.",
+        "> 칸 = 그 층을 핵심 기능으로 가진 솔루션 / ◐ 부분·프리뷰·파트너만 / 빈칸 근거 없음.",
+        "> 범위: 전사 컨텍스트 플랫폼만. 기업용 AI 앱(소비 계층)과 에이전트 내부 도구는 제외 (`tools/scope.yaml`).",
         "> 성숙도는 누적 사다리 기준으로 상한을 적용한 값 (`tools/adjustments.yaml`).",
         "",
         "| 회사 | 분류 | " + " | ".join(f"{k} {LAYER_NAMES[k]}" for k in LAYERS) + " | 성숙도 | 제품 수 |",
@@ -127,6 +151,13 @@ def heatmap_md(vendors: list[dict]) -> str:
     for k in LAYERS:
         names = [v["name"] for v in vendors if v["coverage"][k] == 2]
         lines.append(f"- **{k} {LAYER_NAMES[k]}** ({len(names)}): {', '.join(names)}")
+    lines += ["", "## 맵에서 제외한 에이전트 내부 도구", "",
+              "> 에이전트 하나 안의 SDK·런타임·대화 기억·창 압축·트레이싱. 기업 규모 컨텍스트 플랫폼이 아니라서 제외.", ""]
+    by: dict[str, list[str]] = {}
+    for e in EXCLUDED:
+        by.setdefault(e["vendor"], []).append(e["name"])
+    for vn, names in by.items():
+        lines.append(f"- **{vn}**: {', '.join(names)}")
     return "\n".join(lines) + "\n"
 
 
@@ -138,11 +169,17 @@ def main() -> None:
     mapdir.mkdir(exist_ok=True)
     (mapdir / "products.yaml").write_text(yaml.safe_dump(vendors, allow_unicode=True, sort_keys=False))
     (mapdir / "커버리지_히트맵.md").write_text(heatmap_md(vendors))
-    payload = {"layers": LAYERS, "layerNames": LAYER_NAMES, "categoryNames": CATEGORY_NAMES, "vendors": vendors}
+    trends = json.loads((mapdir / "trends.json").read_text()) if (mapdir / "trends.json").exists() else None
+    events = yaml.safe_load((ROOT / "tools" / "trend_events.yaml").read_text()) if (ROOT / "tools" / "trend_events.yaml").exists() else []
+    for e in events or []:
+        e["date"] = str(e["date"])[:7]
+    payload = {"trends": trends, "events": events, "layers": LAYERS, "layerNames": LAYER_NAMES, "categoryNames": CATEGORY_NAMES, "vendors": vendors}
     tpl = (ROOT / "tools" / "map_template.html").read_text()
     (mapdir / "index.html").write_text(tpl.replace("/*__DATA__*/null", json.dumps(payload, ensure_ascii=False)))
-    n = sum(len(v["products"]) for v in vendors)
-    print(f"회사 {len(vendors)}개, 제품 {n}개 → map/products.yaml, map/커버리지_히트맵.md, map/index.html")
+    n = sum(1 for v in vendors for p in v["products"] if p["scope"] == "core")
+    a = sum(1 for v in vendors for p in v["products"] if p["scope"] == "app")
+    print(f"제외 {len(EXCLUDED)}개 · 앱 {a}개 · ")
+    print(f"회사 {len(vendors)}개, 핵심 솔루션 {n}개 → map/products.yaml, map/커버리지_히트맵.md, map/index.html")
 
 
 if __name__ == "__main__":
