@@ -1,0 +1,5 @@
+# 재배포 권한이 없는 원문(로컬 열람용)과 추출 텍스트는 올리지 않는다
+sources/web/
+sources/papers/2507.13334.pdf
+sources/papers/*.txt
+.DS_Store
