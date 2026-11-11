@@ -62,6 +62,8 @@ section[hidden]{display:none}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
 .seg button{border:0;background:var(--panel);color:var(--ink);padding:5px 12px;font:inherit;font-size:12.5px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px dashed var(--accent);outline-offset:-4px}
+.tover{font-size:12px;color:var(--ink);margin:4px 0 0}
 .tcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;position:relative}
 .tcard h3{margin:0;font-size:14px}.tcard .sub{margin:2px 0 6px}
 .tleg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;margin:4px 0 2px}
@@ -138,8 +140,9 @@ td.h2{background:var(--h2);color:#fff}td.h1{background:var(--h1)}
       <span class="seg" role="group" aria-label="지역"><button data-geo="world" aria-pressed="true">전 세계</button><button data-geo="KR" aria-pressed="false">한국</button></span>
       <span class="seg" role="group" aria-label="척도"><button data-sc="abs" aria-pressed="true">공통 척도</button><button data-sc="idx" aria-pressed="false">각 기술 최고점 = 100</button></span>
       <label><input type="checkbox" id="smooth" checked> 3개월 이동평균</label>
-      <span class="seg" role="group" aria-label="집계 이상 구간 처리"><button data-am="fix" aria-pressed="true">이상 구간 보정</button><button data-am="cut" aria-pressed="false">이상 구간 빼기</button><button data-am="raw" aria-pressed="false">원본 그대로</button></span>
+      <span class="sub">집계 이상 구간:</span><span class="seg" role="group" aria-label="집계 이상 구간 처리"><button data-am="fix" aria-pressed="true" title="이상 구간을 위키백과 조회수로 추정한 값(점선)으로 바꿔 그림">보정(권장)</button><button data-am="cut" aria-pressed="false" title="이상 구간의 값을 그리지 않음">빼기</button><button data-am="raw" aria-pressed="false" title="Google Trends 가 준 값 그대로(이상 구간은 부풀려짐)">원본</button></span>
     </div>
+    <p class="help" id="tmodehint"></p>
     <div id="tcharts"></div>
     <p class="help" id="tnote"></p>
   </section>
@@ -307,7 +310,7 @@ function renderTrend(){
     for(let k=0;k<=4;k++){const v=yt*k/4;svg+=`<line x1="${ml}" x2="${W-mr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="${k?0.6:1}"/><text x="${ml-6}" y="${Y(v)+4}" font-size="10" text-anchor="end" fill="var(--muted)">${Number.isInteger(v)?v:v.toFixed(1)}</text>`;}
     const step=dates.length>120?2:1;dates.forEach((d,i)=>{if(d.endsWith('-01')&&(+d.slice(0,4))%step===0)svg+=`<text x="${X(i)}" y="${H-8}" font-size="10" text-anchor="middle" fill="var(--muted)">${d.slice(0,4)}</text>`;});
     {const a0=dates.findIndex(inAnom);if(a0>=0){const a1=dates.length-1-[...dates].reverse().findIndex(inAnom);
-     svg+=`<rect x="${X(a0)}" y="${mt}" width="${Math.max(2,X(a1)-X(a0))}" height="${H-mt-mb}" fill="var(--muted)" opacity=".13"><title>Google Trends 집계 이상 구간 ${ANOM[0]}~${ANOM[1]}: 주제와 무관한 기술 검색어까지 함께 급등했다가 2026-10 원복. ${tstate.am==='fix'?'점선 = 위키백과 조회수로 보정한 추정값':tstate.am==='cut'?'값을 뺐다':'원본 그대로(부풀려진 값)'}</title></rect><text x="${(X(a0)+X(a1))/2}" y="${H-mb-6}" font-size="10" text-anchor="middle" fill="var(--muted)">${tstate.am==='fix'?'집계 이상 · 점선 = 보정 추정':'집계 이상'}</text>`;}}
+     svg+=`<rect x="${X(a0)}" y="${mt}" width="${Math.max(2,X(a1)-X(a0))}" height="${H-mt-mb}" fill="var(--muted)" opacity=".13"><title>Google Trends 집계 이상 구간 ${ANOM[0]}~${ANOM[1]}: 주제와 무관한 기술 검색어까지 함께 급등했다가 2026-10 원복. ${tstate.am==='fix'?'점선 = 위키백과 조회수로 보정한 추정값':tstate.am==='cut'?'값을 뺐다':'원본 그대로(부풀려진 값)'}</title></rect><text x="${(X(a0)+X(a1))/2}" y="${H-mb-6}" font-size="10" text-anchor="middle" fill="var(--muted)">${tstate.am==='fix'?'집계 이상 구간 · 점선 = 보정 추정':'집계 이상 구간'}</text>`;}}
     // 사건: 세로 점선 + 라벨(줄마다 오른쪽 끝을 기억해 겹치지 않게, 오른쪽 끝에 닿으면 왼쪽으로)
     const laneEnd=Array(lanes).fill(-1e9);
     evs.forEach(e=>{const x=X(dates.indexOf(e.date)),w=e.label.length*6.4+6;const right=x+3+w>W-mr;
@@ -320,17 +323,19 @@ function renderTrend(){
         if(last[k]!==i-1)seg[k]+=`M${X(i-1).toFixed(1)},${Y(s.v[i-1]).toFixed(1)}`;seg[k]+=`L${X(i).toFixed(1)},${Y(v).toFixed(1)}`;last[k]=i;});
       svg+=`<path d="${seg.a}" clip-path="url(#${cid})" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round"/>`;
       if(seg.b)svg+=`<path d="${seg.b}" clip-path="url(#${cid})" fill="none" stroke="${s.color}" stroke-width="2" stroke-dasharray="5 3" stroke-linejoin="round"/>`;});
-    if(over>yt*1.02)svg+=`<text x="${ml+8}" y="${mt+12}" font-size="11" text-anchor="start" fill="var(--ink)">▲ 원본은 이상 구간에서 최대 ${Math.round(over)}까지 치솟음(위쪽 잘림)</text>`;
+    // 잘림 안내는 차트 밖(HTML)에 둔다 — SVG 안에 두면 사건 선·그래프 꼭대기와 겹친다
+    if(over>yt*1.02)card.insertAdjacentHTML('beforeend',`<p class="tover">▲ 원본은 집계 이상 구간에서 최대 ${Math.round(over)}까지 치솟아 차트 위쪽에서 잘렸습니다.</p>`);
     svg+=`<line class="xh" y1="${mt}" y2="${H-mb}" stroke="var(--ink)" stroke-width=".8" visibility="hidden"/><rect x="${ml}" y="${mt}" width="${W-ml-mr}" height="${H-mt-mb}" fill="transparent" class="hit"/></svg>`;
     card.insertAdjacentHTML('beforeend',svg+'<div class="ttip" hidden></div>');box.appendChild(card);
     const sv=card.querySelector('svg'),hit=sv.querySelector('.hit'),xh=sv.querySelector('.xh'),tip=card.querySelector('.ttip');
     hit.addEventListener('mousemove',ev=>{const r=sv.getBoundingClientRect(),px=(ev.clientX-r.left)/r.width*W;
       const i=Math.max(0,Math.min(dates.length-1,Math.round((px-ml)/(W-ml-mr)*(dates.length-1))));xh.setAttribute('x1',X(i));xh.setAttribute('x2',X(i));xh.setAttribute('visibility','visible');
       const rows=vis.map(s=>[s,s.v[i]]).filter(r=>r[1]!=null).sort((a,b)=>b[1]-a[1]);
-      tip.innerHTML=`<b>${dates[i]}</b>`+(inAnom(dates[i])?`<div class="sub">${tstate.am==='fix'?'집계 이상 구간 — 보정 추정값':tstate.am==='raw'?'집계 이상 구간 — 원본(부풀려짐)':'집계 이상 구간'}</div>`:'')+rows.map(([s,v])=>`<div><i style="background:${s.color}"></i>${esc(s.ko)} ${v.toFixed(1)}</div>`).join('');
+      tip.innerHTML=`<b>${dates[i]}</b>`+(inAnom(dates[i])?`<div class="sub">${tstate.am==='fix'?'집계 이상 구간 — 보정 추정값':tstate.am==='raw'?'집계 이상 구간 — 원본(부풀려짐)':'집계 이상 구간 — 값 제외'}</div>`:'')+rows.map(([s,v])=>`<div><i style="background:${s.color}"></i>${esc(s.ko)} ${v.toFixed(1)}</div>`).join('');
       tip.hidden=false;const cr=card.getBoundingClientRect();let left=ev.clientX-cr.left+14;if(left>cr.width-190)left=ev.clientX-cr.left-200;tip.style.left=left+'px';tip.style.top=(ev.clientY-cr.top+10)+'px';});
     hit.addEventListener('mouseleave',()=>{tip.hidden=true;xh.setAttribute('visibility','hidden');});
   });
+  document.getElementById('tmodehint').textContent={fix:'보정: 집계 이상 구간을 위키백과 조회수로 추정한 값(점선)으로 바꿔 그렸습니다. 흐름을 볼 때는 이 화면을 권장합니다.',cut:'빼기: 집계 이상 구간을 비워 두었습니다. 이 구간에 있는 정점(예: MCP 2025년 중반)은 보이지 않습니다.',raw:'원본: Google Trends 값 그대로입니다. 집계 이상 구간은 실제 관심과 무관하게 부풀려져 있습니다.'}[tstate.am];
   document.getElementById('tnote').innerHTML=`출처: Google Trends(pytrends, 수집 ${esc(TR.fetched)}, 지역: ${esc(G.name)}). 차트마다 그 차트 안 최고값 = 100(차트끼리 세로축 비교 불가). 검색어(용어) 기준이라 동음이의어·표기 차이의 영향을 받는다. 마지막 달은 집계 중일 수 있다.<br><b>집계 이상 구간(${esc(ANOM[0])}~${esc(ANOM[1])}) 보정</b>: 이 기간 Google Trends 는 주제와 무관한 영어 기술 검색어까지 2~8배 부풀렸다가 2026-10 원래대로 돌아왔다. 영문 위키백과 조회수에는 이 이상이 없어서, 구간 직전 3개월·직후 1개월의 "Trends 값 ÷ 위키 조회수" 비율을 이어 위키 조회수에 곱했다(점선 = 추정값).${(()=>{const md=[...new Set(Object.values(G.panels).flatMap(p=>Object.entries(p.method||{}).filter(([t,m])=>m!=='wiki').map(([t])=>TR.ko[t]||t)))];return md.length?` 위키 문서를 쓸 수 없는 용어(${md.map(esc).join('·')})는 같은 차트 다른 용어들의 부풀림 배율 중앙값으로 나눴다(오차가 더 크다).`:'';})()}${tstate.geo==='KR'?' 한국은 한국어 위키 조회수가 너무 적어 영문 위키를 썼다 — 한국만의 변화는 이 구간에서 반영되지 않는다.':''} 방법·검증: <a href="https://github.com/hoseoglee/context-engineering-map/tree/main/data/trends">data/trends</a>.`;
 }
 function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(v)));const m=v/p;return (m<=1?1:m<=2?2:m<=2.5?2.5:m<=5?5:10)*p;}
