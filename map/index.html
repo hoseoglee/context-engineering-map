@@ -278,7 +278,7 @@ const PANELS=[
   {id:'e2',title:'2 빅데이터·지식그래프 시대',sub:'2006년~ 전체 기간 (두 요청을 지식그래프 기준으로 이음)'},
   {id:'e3',title:'3 LLM·에이전트 시대 — 큰 흐름',sub:'2006년~ 전체 기간. AI 에이전트 검색량이 압도적이라 "각 기술 최고점 = 100" 으로 보면 모양 비교가 쉽다.'},
 ];
-function tseries(fixed,raw,dates){const m=tstate.am;
+function tseries(fixed,raw,dates,mode){const m=mode||tstate.am;
   const r=m==='raw'?raw.slice():m==='cut'?fixed.map((x,i)=>inAnom(dates[i])?null:x):fixed.slice();
   if(!document.getElementById('smooth').checked)return r;
   return r.map((x,i)=>{if(x==null)return null;const w=r.slice(Math.max(0,i-2),i+1).filter(y=>y!=null);return w.reduce((a,b)=>a+b,0)/w.length;});}
@@ -287,9 +287,10 @@ function renderTrend(){
   const G=TR.geos[tstate.geo];box.innerHTML='';if(G.anom)ANOM=G.anom;
   PANELS.forEach(P=>{const pd=G.panels[P.id];if(!pd)return;const dates=pd.dates;
     const terms=Object.keys(pd.series);
-    let ser=terms.map((term,k)=>({term,ko:TR.ko[term]||term,v:tseries(pd.series[term],(pd.raw||pd.series)[term],dates),color:`var(--s${k+1})`}));
-    const pmax=Math.max(...ser.flatMap(s=>s.v).filter(x=>x!=null))||1;
-    ser.forEach(s=>{const m=tstate.sc==='idx'?(Math.max(...s.v.filter(x=>x!=null))||1):pmax;s.v=s.v.map(x=>x==null?null:x/m*100);});
+    // 세로축 기준은 모드와 상관없이 '보정값' 최고점 — 원본 모드에서 부풀린 꼭대기가 기준이 되면 나머지 기간이 납작해진다
+    let ser=terms.map((term,k)=>({term,ko:TR.ko[term]||term,v:tseries(pd.series[term],(pd.raw||pd.series)[term],dates),f:tseries(pd.series[term],(pd.raw||pd.series)[term],dates,'fix'),color:`var(--s${k+1})`}));
+    const pmax=Math.max(...ser.flatMap(s=>s.f).filter(x=>x!=null))||1;
+    ser.forEach(s=>{const m=tstate.sc==='idx'?(Math.max(...s.f.filter(x=>x!=null))||1):pmax;s.v=s.v.map(x=>x==null?null:x/m*100);s.f=s.f.map(x=>x==null?null:x/m*100);});
     const card=document.createElement('div');card.className='tcard';
     card.innerHTML=`<h3>${esc(P.title)}</h3><div class="sub">${esc(P.sub)}</div><div class="tleg"></div>`;
     const leg=card.querySelector('.tleg');
@@ -299,9 +300,10 @@ function renderTrend(){
     const vis=ser.filter(s=>!tstate.hidden.has(s.term));
     const evs=EV.filter(e=>(e.panels||[]).includes(P.id)&&dates.includes(e.date));
     const lanes=evs.length?3:0,W=1000,mt=14+lanes*13,H=(P.id==='story'?320:240)+lanes*13,ml=36,mr=14,mb=26;
-    const ymax=Math.max(1,...vis.flatMap(s=>s.v).filter(x=>x!=null));const yt=niceMax(ymax);
+    const ymax=Math.max(1,...vis.flatMap(s=>s.f).filter(x=>x!=null));const yt=niceMax(ymax);
+    const over=Math.max(0,...vis.flatMap(s=>s.v).filter(x=>x!=null));const cid='tclip-'+P.id;
     const X=i=>ml+i/(dates.length-1)*(W-ml-mr),Y=v=>H-mb-v/yt*(H-mt-mb);
-    let svg=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(P.title)} 관심도 추이">`;
+    let svg=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(P.title)} 관심도 추이"><defs><clipPath id="${cid}"><rect x="${ml}" y="${mt-2}" width="${W-ml-mr}" height="${H-mt-mb+4}"/></clipPath></defs>`;
     for(let k=0;k<=4;k++){const v=yt*k/4;svg+=`<line x1="${ml}" x2="${W-mr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="${k?0.6:1}"/><text x="${ml-6}" y="${Y(v)+4}" font-size="10" text-anchor="end" fill="var(--muted)">${Number.isInteger(v)?v:v.toFixed(1)}</text>`;}
     const step=dates.length>120?2:1;dates.forEach((d,i)=>{if(d.endsWith('-01')&&(+d.slice(0,4))%step===0)svg+=`<text x="${X(i)}" y="${H-8}" font-size="10" text-anchor="middle" fill="var(--muted)">${d.slice(0,4)}</text>`;});
     {const a0=dates.findIndex(inAnom);if(a0>=0){const a1=dates.length-1-[...dates].reverse().findIndex(inAnom);
@@ -316,8 +318,9 @@ function renderTrend(){
     vis.forEach(s=>{const seg={a:'',b:''},last={a:-2,b:-2};
       s.v.forEach((v,i)=>{if(i===0||v==null||s.v[i-1]==null)return;const k=(tstate.am==='fix'&&(inAnom(dates[i])||inAnom(dates[i-1])))?'b':'a';
         if(last[k]!==i-1)seg[k]+=`M${X(i-1).toFixed(1)},${Y(s.v[i-1]).toFixed(1)}`;seg[k]+=`L${X(i).toFixed(1)},${Y(v).toFixed(1)}`;last[k]=i;});
-      svg+=`<path d="${seg.a}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round"/>`;
-      if(seg.b)svg+=`<path d="${seg.b}" fill="none" stroke="${s.color}" stroke-width="2" stroke-dasharray="5 3" stroke-linejoin="round"/>`;});
+      svg+=`<path d="${seg.a}" clip-path="url(#${cid})" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round"/>`;
+      if(seg.b)svg+=`<path d="${seg.b}" clip-path="url(#${cid})" fill="none" stroke="${s.color}" stroke-width="2" stroke-dasharray="5 3" stroke-linejoin="round"/>`;});
+    if(over>yt*1.02)svg+=`<text x="${ml+8}" y="${mt+12}" font-size="11" text-anchor="start" fill="var(--ink)">▲ 원본은 이상 구간에서 최대 ${Math.round(over)}까지 치솟음(위쪽 잘림)</text>`;
     svg+=`<line class="xh" y1="${mt}" y2="${H-mb}" stroke="var(--ink)" stroke-width=".8" visibility="hidden"/><rect x="${ml}" y="${mt}" width="${W-ml-mr}" height="${H-mt-mb}" fill="transparent" class="hit"/></svg>`;
     card.insertAdjacentHTML('beforeend',svg+'<div class="ttip" hidden></div>');box.appendChild(card);
     const sv=card.querySelector('svg'),hit=sv.querySelector('.hit'),xh=sv.querySelector('.xh'),tip=card.querySelector('.ttip');
